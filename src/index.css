@@ -6,3 +6,25 @@ body {
   margin: 0;
 }  
 
+.red-button {
+  background-color: rgb(201,1,7);
+  border-radius: 5px;
+  box-shadow: -4px 4px black;
+}
+#nav {
+  background-color: rgb(251,202,3);
+  border-radius: 5px;
+  box-shadow: -4px 4px black;
+}
+::-webkit-scrollbar-thumb {
+  background: transparent; 
+}
+::-webkit-scrollbar-track {
+  background: transparent; 
+}
+::-webkit-scrollbar {
+  width: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}

@@ -4,7 +4,8 @@ import LoginModal from "../login-logout/login-modal-component";
 const Header = () => {
     
     return (
-        <nav className="navbar navbar-expand-md bg-warning navbar-light card-header">
+    <div id="nav">
+        <nav className="navbar navbar-expand-md bg-warning fixed-top">
             <a className="navbar-brand" href="/"><img src="jerklogo.png" alt="logo" width="140" height="50"></img></a>
             <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
@@ -12,6 +13,7 @@ const Header = () => {
                 </li>
             </ul>
         </nav>
+    </div>
     );
 };
 
