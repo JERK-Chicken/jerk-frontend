@@ -1,36 +1,19 @@
 import React from "react";
-//import { Link } from "react-router-dom";
-//import FormInput from "../general/form-input-component";
-import { Modal, Button } from "react-bootstrap";
+import FormInput from "../general/form-input-component";
 
-
-const LoginModal = (props) => {
-  return (  
-
-    <Modal
-      {...props}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Modal heading
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <h4>Centered Modal</h4>
-        <p>
-          Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-          dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-          consectetur ac, vestibulum at eros.
-        </p>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
-      </Modal.Footer>
-    </Modal>
+const LoginForm = (props) => {
+  return (
+    
+    <div id = "NewCard">
+      <form className = "input-form">
+        <FormInput name="username" type="text" onChange={props.onChange}></FormInput>
+        <FormInput name="password" type="password" onChange={props.onChange}></FormInput>
+        <button className="btn btn-primary" onClick={props.onSubmit}>
+          Submit
+        </button>
+      </form>
+    </div>
   );
 };
 
-export default LoginModal;
+export default LoginForm;

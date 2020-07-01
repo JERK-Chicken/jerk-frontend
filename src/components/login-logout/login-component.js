@@ -1,34 +1,37 @@
-import React from "react";
-import FormInput from "../general/form-input-component";
+import React, { useState } from "react";
+import Modal from "react-modal";
+import LoginForm from "./login-form-component";
 
-const LoginForm = (props) => {
+const LoginModal = () => { 
+  const [modalIsOpen, setModalisOpen] = useState(false);
   return (
-    <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
+    
+    <div>
+      <button class="btn btn-danger btn-info btn-lg" onClick={() => setModalisOpen(true)} >
+        Login
+      </button>
+
+
+      <Modal isOpen={modalIsOpen} onRequestClose={() => setModalisOpen(false)}> 
+      <div class="modal-dialog modal-dialog-centered " role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
+        <h5 class="modal-title" id="exampleModalLabel">Login!</h5>
+        <button type="button" onClick={() => setModalisOpen(false)} class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
         </div>
         <div class="modal-body">
-        <form className = "input-form">
-        <FormInput name="username" type="text" onChange={props.onChange}></FormInput>
-        <FormInput name="password" type="password" onChange={props.onChange}></FormInput>
-        <button className="btn btn-primary" onClick={props.onSubmit}>
-          Submit
-        </button>
-      </form>
+        <LoginForm></LoginForm>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
-      </div>
-      
+        </div>
+      </Modal>
     </div>
-  </div>
+    
     
   );
 };
 
-export default LoginForm;
+export default LoginModal;
 
