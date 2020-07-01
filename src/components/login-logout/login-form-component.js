@@ -3,8 +3,7 @@ import FormInput from "../general/form-input-component";
 
 const LoginForm = (props) => {
   return (
-    
-    <div id = "NewCard">
+  
       <form className = "input-form">
         <FormInput name="username" type="text" onChange={props.onChange}></FormInput>
         <FormInput name="password" type="password" onChange={props.onChange}></FormInput>
@@ -12,7 +11,7 @@ const LoginForm = (props) => {
           Submit
         </button>
       </form>
-    </div>
+    
   );
 };
 

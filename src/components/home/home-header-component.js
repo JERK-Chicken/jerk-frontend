@@ -1,5 +1,5 @@
 import React from "react";
-import LoginModal from "../login-logout/login-component";
+import LoginModal from "../login-logout/login-modal-component";
 
 const Header = () => {
     

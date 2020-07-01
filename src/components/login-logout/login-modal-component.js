@@ -12,11 +12,11 @@ const LoginModal = () => {
       </button>
 
 
-      <Modal isOpen={modalIsOpen} onRequestClose={() => setModalisOpen(false)} className="modal-dialog-centered"> 
-      <div class="modal-dialog modal-dialog-centered " role="document">
+      <Modal className="modal modal-dialog modal-dialog-centered" role="dialog" isOpen={modalIsOpen}  onRequestClose={() => setModalisOpen(false)} > 
+      
       <div class="modal-content">
         <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Login!</h5>
+        <h5 class="modal-title">Login!</h5>
         <button type="button" onClick={() => setModalisOpen(false)} class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -25,7 +25,7 @@ const LoginModal = () => {
         <LoginForm></LoginForm>
         </div>
         </div>
-        </div>
+
       </Modal>
     </div>
     
