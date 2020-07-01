@@ -1,5 +1,6 @@
 import React from "react";
-//import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import LoginForm from "../login-logout/login-form-component";
 
 const Header = () => {
     return (
@@ -7,7 +8,7 @@ const Header = () => {
             <a className="navbar-brand" href="/"><img src="clearjerklogo.png" alt="logo" width="150" height="60"></img></a>
             <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
-                    <p>Login</p>
+                    <LoginForm></LoginForm>
                 </li>
             </ul>
         </nav>

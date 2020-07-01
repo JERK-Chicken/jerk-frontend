@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Home from "../home-component";
-import Footer from '../footer-component';
+import Home from "../home/home-component";
+import Footer from '../home/footer-component';
 
 function UserApp() {
 
