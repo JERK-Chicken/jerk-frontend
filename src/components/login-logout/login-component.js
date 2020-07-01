@@ -12,7 +12,7 @@ const LoginModal = () => {
       </button>
 
 
-      <Modal isOpen={modalIsOpen} onRequestClose={() => setModalisOpen(false)}> 
+      <Modal isOpen={modalIsOpen} onRequestClose={() => setModalisOpen(false)} className="modal-dialog-centered"> 
       <div class="modal-dialog modal-dialog-centered " role="document">
       <div class="modal-content">
         <div class="modal-header">
