@@ -7,13 +7,12 @@ import Home from "./components/home/home-component";
 import FAQ from "./components/home/faq-component";
 import Help from "./components/home/help-component";
 import Legal from "./components/home/legal-component";
-import UserApp from './components/user/User';
-import AdminApp from './components/admin/Admin';
+import UserApp from './components/user/user';
+import AdminApp from './components/admin/admin';
 import Header from './components/home/home-header-component';
 
 
 function App() {
-  // "We will defeat team rennie"
 
   return (
     <div>
