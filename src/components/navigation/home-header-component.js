@@ -1,7 +1,12 @@
-import React from "react";
-import Login from "../login-logout/login-component";
+import React, { useState } from "react";
+import LoginButton from "./login-button";
+import isLoggedIn from "../../helpers/logged-in-check"
 
 const Header = () => {
+    // const [loggedIn, setLoggedIn] = useState(isLoggedIn());
+    const [loggedIn, ] = useState(isLoggedIn());
+
+    let loggingButton = loggedIn ? "" : <LoginButton/>;
     
     return (
     <div id="nav">
@@ -9,7 +14,7 @@ const Header = () => {
             <a className="navbar-brand" href="/"><img src="jerklogo.png" alt="logo" width="140" height="50"></img></a>
             <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
-                  <Login></Login>
+                  {loggingButton}
                 </li>
             </ul>
         </nav>
