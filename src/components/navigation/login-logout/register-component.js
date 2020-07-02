@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
-import RegisterForm from "./register-form-component";
+import RegisterForm from "./register-form";
 import axios from "axios";
 
 const Register = (props) => { 

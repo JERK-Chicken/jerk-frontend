@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import LogoutForm from "./logout-form-component";
+import LogoutForm from "./logout-form";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
 import Login from "./login-component"
 
 
-const Logout = (props) => {
+const LogoutButton = (props) => {
     let[logout,setLogout] = useState({Login});
     const submitLogout = (e) =>{
         e.preventDefault();
@@ -34,4 +34,4 @@ const Logout = (props) => {
     )
 };
 
-export default withRouter(Logout);
+export default withRouter(LogoutButton);

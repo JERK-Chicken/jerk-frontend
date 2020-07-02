@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
-import LoginForm from "../login-logout/login-form-component";
+import LoginForm from "./login-form";
 import axios from "axios";
 import jwt from "jsonwebtoken";
 
