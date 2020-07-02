@@ -1,15 +1,15 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Footer from "./components/home/footers/footer-component";
+import Footer from "./components/navigation/footers/footer-component";
 import NotFound from "./components/not-found/not-found-component";
 import Home from "./components/home/home-component";
-import FAQ from "./components/home/footers/faq-component";
-import Help from "./components/home/footers/help-component";
-import Legal from "./components/home/footers/legal-component";
+import FAQ from "./components/navigation/footers/faq-component";
+import Help from "./components/navigation/footers/help-component";
+import Legal from "./components/navigation/footers/legal-component";
 import UserApp from './components/user/User';
 import AdminApp from './components/admin/Admin';
-import Header from './components/home/home-header-component';
+import Header from './components/navigation/home-header-component';
 
 
 function App() {
