@@ -37,7 +37,7 @@ const Login = (props) => {
   return (
     <div>
       <div class="red-button">
-      <button className="btn btn-lg" onClick={() => setModalisOpen(true)} >
+      <button className="btn btn-lg text-white" onClick={() => setModalisOpen(true)} >
         Login
       </button>
       </div>
