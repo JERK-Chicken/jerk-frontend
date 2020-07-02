@@ -13,6 +13,7 @@ import Header from './components/home/home-header-component';
 
 
 function App() {
+  // "We will defeat team rennie"
 
   return (
     <div>
