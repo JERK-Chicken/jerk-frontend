@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import LoginButton from "./login-button";
+import LoginButton from "./login-logout/login-button";
 import isLoggedIn from "../../helpers/logged-in-check"
 
 const Header = () => {

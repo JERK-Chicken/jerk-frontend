@@ -1,5 +1,5 @@
 import React from "react";
-import FormInput from "../general/form-input-component";
+import FormInput from "../../general/form-input-component";
 import Register from "./register-component";
 
 const LoginForm = (props) => {
