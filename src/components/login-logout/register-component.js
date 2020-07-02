@@ -2,37 +2,28 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import RegisterForm from "./register-form-component";
 import axios from "axios";
-import jwt from "jsonwebtoken";
 
 const Register = (props) => { 
   const [modalIsOpen, setModalisOpen] = useState(false);
-  const [login, setLogin] = useState({});
-  const submitLogin = (e) => {
+  const [users, setRegister] = useState({});
+  const submitRegister = (e) => {
       e.preventDefault();
-        (async _ => {
-          try {
-            const loginResult = await axios.post("http://13.59.52.148:8082/login",login);
-            sessionStorage.setItem("json-token",loginResult.data.token)
-            const decoded = jwt.decode(loginResult.data.token);
-           
-            if(decoded.roles === 'admin'){
-              props.history.push('/admin')
-          } else{
-              if(decoded.roles === 'user'){
-              props.history.push('/user')
-              }
-          }
-          } catch (error) {
-            console.error(error);
-          }
-        })()};
+      
+      axios
+      .post("http://13.59.52.148:8082/register", )
+      .then(() => {
+        console.log(`Happy Cooking!: ${users}`);
+        props.history.push("/");
+    })
+        .catch(() => {
+        console.error(`Failed Request`);
+        });
+    };
         const handleChange = (e) => {
-          const inputValue = e.target.value;
-          const inputField = e.target.name;
-          setLogin({ ...login, [inputField]: inputValue });
-          console.log('Input', inputValue);
-          console.log('Field', inputField);
-        }  
+        const inputValue = e.target.value;
+        const inputField = e.target.name;
+        setRegister({ ...users, [inputField]: inputValue });
+    }  
   
   return (
     <div>
@@ -52,7 +43,7 @@ const Register = (props) => {
         </div>
         <div class="modal-body">
         <RegisterForm>
-          button onSubmit={submitLogin}
+          button onSubmit={submitRegister}
           onChange={handleChange}
         </RegisterForm>
         </div>

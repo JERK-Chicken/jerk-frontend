@@ -7,7 +7,6 @@ const LogoutForm = (props) => {
           Logout
         </button>
       </div>
-    
   );
 };
 
