@@ -10,6 +10,9 @@ const LoginForm = (props) => {
         <button className="btn btn-primary" onClick={props.onSubmit}>
           Submit
         </button>
+        <button className="btn btn-primary float-right" onClick={props.onSubmit}>
+          Register
+        </button>
       </form>
     
   );
