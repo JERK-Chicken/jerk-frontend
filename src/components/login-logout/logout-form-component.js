@@ -1,14 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 const LogoutForm = (props) => {
   return (
-    <div id = "logout" >
-      
-        <Link className="btn-logout" onClick={props.onClick}>
-          Logout
-        </Link>
-      
+    <div class="red-button">
+      <button className="btn btn-lg" onClick={props.onClick}>
+        Logout
+      </button>
     </div>
   );
 };

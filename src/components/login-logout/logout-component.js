@@ -11,8 +11,8 @@ const Logout = (props) => {
         e.preventDefault();
         (async _ =>{
             try{
-                const logoutResult = await axios.get("http://cors-anywhere.herokuapp.com/http://13.59.52.148:8082/auth/logout",logout);
-                localStorage.clear(logoutResult.data.token);
+                const logoutResult = await axios.get("http://13.59.52.148:8082/auth/logout",logout);
+                sessionStorage.clear(logoutResult.data.token);
                 props.history.push ('/');
             } catch(err){
                 console.log(err)

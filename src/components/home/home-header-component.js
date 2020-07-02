@@ -1,5 +1,5 @@
 import React from "react";
-import LoginModal from "../login-logout/login-modal-component";
+import Login from "../login-logout/login-component";
 
 const Header = () => {
     
@@ -9,7 +9,7 @@ const Header = () => {
             <a className="navbar-brand" href="/"><img src="jerklogo.png" alt="logo" width="140" height="50"></img></a>
             <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
-                  <LoginModal></LoginModal>
+                  <Login></Login>
                 </li>
             </ul>
         </nav>
