@@ -3,10 +3,12 @@ import {combineReducers} from 'redux';
 
 import userRolesLoaderReducer from './reducers/user-roles-loader';
 import usernameUpdaterReducer from './reducers/username-loader';
+import loggerReducer from './reducers/logger';
 
 const allReducers = combineReducers({
     userRoles : userRolesLoaderReducer,
     username : usernameUpdaterReducer,
+    isLoggedIn : loggerReducer,
 })
 
 export const store = createStore(

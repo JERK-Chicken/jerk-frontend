@@ -1,37 +1,39 @@
-import React, { useState } from "react";
-import LogoutForm from "./logout-form";
-import axios from "axios";
-import { withRouter } from "react-router-dom";
-import Login from "./login-component"
-
+import React from "react";
+import { connect } from "react-redux";
+// import axios from "axios";
+// import { withRouter } from "react-router-dom";
+import {logOut} from '../../../redux/actions/logging-actions'
 
 const LogoutButton = (props) => {
-    let[logout,setLogout] = useState({Login});
     const submitLogout = (e) =>{
         e.preventDefault();
         (async _ =>{
-            try{
-                const logoutResult = await axios.get("http://13.59.52.148:8082/auth/logout",logout);
-                sessionStorage.clear(logoutResult.data.token);
-                props.history.push ('/');
-            } catch(err){
-                console.log(err)
-            }
+            // try{
+            //     const logoutResult = await axios.get("http://13.59.52.148:8082/auth/logout",logout);
+            //     sessionStorage.clear(logoutResult.data.token);
+            //     props.history.push ('/');
+            // } catch(err){
+            //     console.log(err)
+            // }
+            props.logOut();
         })() 
-    }
-
-    const handleChange = (e) =>{
-        const credentials  = null;
-        const inputField = e.target.name 
-        setLogout({...logout, [inputField]: credentials})
     }
 
     return(
         <div className = 'Logout'>
-            <LogoutForm onClick={submitLogout} onSubmit={handleChange}>
-            </LogoutForm>
+            <div className="red-button">
+                <button className="btn btn-lg" onClick={submitLogout}>
+                    Logout
+                </button>
+            </div>
         </div>
     )
 };
 
-export default withRouter(LogoutButton);
+function mapDispatchToProps(dispatch) {
+    return {
+        logOut: () => dispatch(logOut()),
+    };
+}
+
+export default connect(null, mapDispatchToProps)(LogoutButton);

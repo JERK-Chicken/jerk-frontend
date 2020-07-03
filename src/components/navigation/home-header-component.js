@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
+import { connect } from "react-redux";
 import LoginButton from "./login-logout/login-button";
-import isLoggedIn from "../../helpers/logged-in-check"
+import LogoutButton from "./login-logout/logout-button";
 
-const Header = () => {
-    // const [loggedIn, setLoggedIn] = useState(isLoggedIn());
-    const [loggedIn, ] = useState(isLoggedIn());
-
-    let loggingButton = loggedIn ? "" : <LoginButton/>;
+const Header = (props) => {
+    let loggingButton = props.isLoggedIn ? <LogoutButton/> : <LoginButton/>;
     
     return (
     <div id="nav">
@@ -22,4 +20,10 @@ const Header = () => {
     );
 };
 
-export default Header;
+function mapStateToProps(store) {
+    return {
+        isLoggedIn : store.isLoggedIn,
+    };
+}
+
+export default connect(mapStateToProps)(Header);
