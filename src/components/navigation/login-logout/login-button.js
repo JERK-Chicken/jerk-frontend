@@ -1,66 +1,30 @@
-import React, { useState } from "react";
-import Modal from "react-modal";
-import LoginForm from "./login-form";
-import axios from "axios";
-import jwt from "jsonwebtoken";
+import React from "react";
+import LoginModal from "./login-modal";
 
-const Login = (props) => { 
-  const [modalIsOpen, setModalisOpen] = useState(false);
-  const [login, setLogin] = useState({});
-  const submitLogin = (e) => {
-      e.preventDefault();
-        (async _ => {
-          try {
-            const loginResult = await axios.post("http://13.59.52.148:8082/login",login);
-            sessionStorage.setItem("json-token",loginResult.data.token)
-            const decoded = jwt.decode(loginResult.data.token);
-           
-            if(decoded.roles === 'admin'){
-              props.history.push('/admin')
-          } else{
-              if(decoded.roles === 'user'){
-              props.history.push('/user')
-              }
-          }
-          } catch (error) {
-            console.error(error);
-          }
-        })()};
-        const handleChange = (e) => {
-          const inputValue = e.target.value;
-          const inputField = e.target.name;
-          setLogin({ ...login, [inputField]: inputValue });
-          console.log('Input', inputValue);
-          console.log('Field', inputField);
-        }  
+class LoginButton extends React.Component { 
+  constructor(props) {
+    super(props);
+    this.state = {modalIsOpen: false};
+  }
+
+  updateModal = (modalState) => {
+    this.setState({modalIsOpen: modalState});
+  }; 
   
-  return (
-    <div>
-      <div class="red-button">
-      <button className="btn btn-lg text-white" onClick={() => setModalisOpen(true)} >
-        Login
-      </button>
-      </div>
-
-      <Modal className="modal modal-dialog modal-dialog-centered" role="dialog" isOpen={modalIsOpen}  onRequestClose={() => setModalisOpen(false)} >  
-      <div class="modal-content">
-        <div class="modal-header">
-        <h5 class="modal-title">Login!</h5>
-        <button type="button" onClick={() => setModalisOpen(false)} class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+  render() {
+    return (
+      <div>
+        <div className="red-button">
+        <button className="btn btn-lg text-white" onClick={() => this.updateModal(true)} >
+          Login
         </button>
         </div>
-        <div class="modal-body">
-        <LoginForm>
-          button onSubmit={submitLogin}
-          onChange={handleChange}
-        </LoginForm>
-        </div>
-        </div>
-      </Modal>
-    </div>   
-  );
+        <LoginModal modalIsOpen={this.state.modalIsOpen} setModalIsOpen={this.updateModal}/>
+
+      </div>   
+    );
+  }
 };
 
-export default Login;
+export default LoginButton;
 

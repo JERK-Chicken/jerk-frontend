@@ -27,21 +27,21 @@ const Register = (props) => {
   
   return (
     <div>
-      <div class="red-button">
+      <div className="red-button">
       <button className="btn btn-lg float-right" onClick={() => setModalisOpen(true)} >
         Register
       </button>
       </div>
 
       <Modal className="modal modal-dialog modal-dialog-centered" role="dialog" isOpen={modalIsOpen}  onRequestClose={() => setModalisOpen(false)} >  
-      <div class="modal-content">
-        <div class="modal-header">
-        <h5 class="modal-title">Register!</h5>
-        <button type="button" onClick={() => setModalisOpen(false)} class="close" data-dismiss="modal" aria-label="Close">
+      <div className="modal-content">
+        <div className="modal-header">
+        <h5 className="modal-title">Register!</h5>
+        <button type="button" onClick={() => setModalisOpen(false)} className="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
         </div>
-        <div class="modal-body">
+        <div className="modal-body">
         <RegisterForm>
           button onSubmit={submitRegister}
           onChange={handleChange}
