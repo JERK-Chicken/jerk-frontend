@@ -37,8 +37,9 @@ export default function LoginModal(props) {
 
     return (
     <Modal className="modal modal-dialog modal-dialog-centered" 
-            role="dialog" 
-            isOpen={props.modalIsOpen}  
+            role="dialog"
+            ariaHideApp={false}
+            isOpen={props.modalIsOpen}
             onRequestClose={() => props.setModalIsOpen(false)}
     >  
         <div className="modal-content">
