@@ -1,8 +1,9 @@
 import * as types from './action-types';
 
-export const logIn = () => {
+export const logIn = (token) => {
     return {
         type: types.LOG_IN,
+        token
     };
 }
 

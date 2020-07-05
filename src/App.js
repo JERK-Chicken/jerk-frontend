@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from "axios";
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Footer from "./components/navigation/footers/footer-component";
@@ -11,6 +12,8 @@ import UserApp from './components/user/User';
 import AdminApp from './components/admin/Admin';
 import Header from './components/navigation/home-header-component';
 
+axios.defaults.baseURL = "http://3.136.11.92:8083";
+// axios.defaults.withCredentials = true;
 
 function App() {
 

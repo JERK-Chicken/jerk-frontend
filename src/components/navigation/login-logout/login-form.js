@@ -1,5 +1,5 @@
 import React from "react";
-// import axios from "axios";
+import axios from "axios";
 // import jwt from "jsonwebtoken";
 import { connect } from "react-redux";
 import FormInput from "../../general/form-input-component";
@@ -10,22 +10,28 @@ const LoginForm = (props) => {
   const submitLogin = (e) => {
     e.preventDefault();
     (async _ => {
-      // try {
-      //   const loginResult = await axios.post("http://13.59.52.148:8082/login", props.credentials);
-      //   sessionStorage.setItem("json-token",loginResult.data.token)
-      //   const decoded = jwt.decode(loginResult.data.token);
+      try {
+        console.log("POST body:", props.credentials);
+        const response = await axios.post("/users/login", props.credentials);
+        // const data = jwt.decode(response.data);
+
+        // console.log(data);
+        // console.log(response);
+
+        props.logIn(response.data);
     
-      //   if(decoded.roles === 'admin'){
-      //     props.history.push('/admin')
-      // } else{
-      //   if(decoded.roles === 'user'){
-      //     props.history.push('/user')
-      //   }
-      // }
-      // } catch (error) {
-      //   console.error(error);
-      // }
-      props.logIn();
+        // if(data.roles === 'admin'){
+        //   props.history.push('/admin')
+        // } else{
+        //   if(data.roles === 'user'){
+        //     props.history.push('/user')
+        //   }
+        // }
+      } 
+      catch (error) {
+        console.error(error);
+        console.error(error.response);
+      }
     })()
   };
 
