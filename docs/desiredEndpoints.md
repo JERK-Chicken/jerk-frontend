@@ -3,7 +3,7 @@
 #### Login:
 Method: POST  
 Body: A JSON containing `{username, password}`  
-Returns: A JSON object containing...
+Returns: A token containing...
 - `userId`
 - `username`
 - `roles` (a list of the user roles)
@@ -11,7 +11,7 @@ Returns: A JSON object containing...
 #### Register New Account:
 Method: POST  
 body: A JSON containing `{username, password}`  
-Returns: List of `{id, username}` JSONs
+Returns: A token containing
 - `userId`
 - `username`
 - `roles` (a list of the user roles)
