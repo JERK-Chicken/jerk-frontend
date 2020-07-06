@@ -16,7 +16,7 @@ const LoginForm = (props) => {
         // const data = jwt.decode(response.data);
 
         // console.log(data);
-        // console.log(response);
+        console.log(response);
 
         props.logIn(response.data);
     
