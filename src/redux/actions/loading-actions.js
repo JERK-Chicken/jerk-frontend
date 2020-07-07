@@ -13,3 +13,10 @@ export const loadUsername = (username) => {
         username
     };
 }
+
+export const loadCategories = (categories) => {
+    return {
+        type: types.LOAD_CATEGORIES,
+        categories
+    };
+}
