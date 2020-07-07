@@ -1,9 +1,15 @@
 import React from "react";
 import Footer from "./footer";
+import RecipeFinder from "./recipe-finder";
 
 const Home = () => {
+    console.log("sdkjhskfjh");
     return (
-        <Footer/>
+        <div>
+            <RecipeFinder/>
+            <Footer/>
+        </div>
+        
     );
 };
 
