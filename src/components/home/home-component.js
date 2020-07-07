@@ -3,7 +3,6 @@ import Footer from "./footer";
 import RecipeFinder from "./recipe-finder";
 
 const Home = () => {
-    console.log("sdkjhskfjh");
     return (
         <div>
             <RecipeFinder/>

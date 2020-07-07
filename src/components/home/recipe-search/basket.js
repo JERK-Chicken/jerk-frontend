@@ -1,19 +1,19 @@
 import React from "react";
 
-const RecipeResults = () => {
+const Basket = () => {
     return (
         <div>
-            <h2>This is a RecipeResults component...</h2>
+            <h3>This is a Basket component...</h3>
             <table className="table table-hover table-dark">
                 <tbody>
                     <tr>
-                        <td>Strawberry Pie</td>
+                        <td>Strawberry</td>
                     </tr>
                     <tr>
-                        <td>Blueberry Pie</td>
+                        <td>Blueberry</td>
                     </tr>
                     <tr>
-                        <td>Cranberry Pie</td>
+                        <td>Cranberry</td>
                     </tr>
                 </tbody>
             </table>
@@ -21,4 +21,4 @@ const RecipeResults = () => {
     );
 };
 
-export default RecipeResults;
+export default Basket;
