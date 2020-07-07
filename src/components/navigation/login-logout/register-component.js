@@ -10,7 +10,7 @@ const Register = (props) => {
       e.preventDefault();
       
       axios
-      .post("http://13.59.52.148:8082/register", users)
+      .post("http://3.136.11.92:8083/users/register", users)
       .then(() => {
         console.log(`Happy Cooking!: ${users}`);
         props.history.push("/");

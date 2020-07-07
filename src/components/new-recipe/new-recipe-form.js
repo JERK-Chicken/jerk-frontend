@@ -151,7 +151,10 @@ class NewRecipe extends React.Component {
                                         </tfoot>
                                     </table>
                                 </div>
-                                <div className="card-footer text-center"> <button type="submit" className="btn btn-primary text-center">Submit</button></div>
+                                <div className="row card-footer justify-content-between">
+                                    <button type="submit" className="btn btn-primary text-center">Submit</button>
+                                    <a class="btn btn-danger" href="/user" role="button">Cancel</a>
+                                </div>
                             </div>
                         </div>
                         <div className="col-sm-1"></div>
