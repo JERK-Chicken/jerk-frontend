@@ -1,6 +1,6 @@
 import React from 'react';
 import RecipeBook from './recipe-book';
-import UserRecipe from './user-information';
+import UserRecipe from './user-recipes';
 
 function UserApp() {
 
@@ -19,10 +19,10 @@ function UserApp() {
             <div class="card col-5">
                 <h3>Your Recipes</h3>
                 <UserRecipe></UserRecipe>
-                <div className="row justify-content-between">
+                <div className="row justify-content-around align-items-end">
                 <a class="btn btn-sm btn-success" href="/new-recipe" role="button">Add</a>
                 <button type="button" class="btn btn-info btn-sm">Modify</button>
-                <button type="button" class="btn btn-warning btn-sm">Delete</button>
+                <button type="button" class="btn btn-danger btn-sm">Delete</button>
                 </div>
             </div>
         </div>
