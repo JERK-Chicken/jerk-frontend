@@ -11,7 +11,7 @@ function UserApp() {
             <div class="col-5">
             <div className="card">
                 <div className="card-header"><h3>User Information</h3></div>
-                <div className="card-body"><p>Hello Clarisse</p></div>
+                <div className="card-body"><p>Hello Clarice</p></div>
                 <div className="row card-footer justify-content-between"></div>
                 </div>
             </div>
@@ -34,8 +34,8 @@ function UserApp() {
                 </div>
                 <div className="row card-footer justify-content-between">
                 <a class="btn btn-sm btn-success" href="/new-recipe" role="button">Add New Recipe</a>
-                <button type="button" class="btn btn-info btn-sm">Modify</button>
-                <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                <button type="button" class="btn btn-info btn-sm">Modify Recipe</button>
+                <button type="button" class="btn btn-danger btn-sm">Delete Recipe</button>
                 </div>
                 </div>
             </div>

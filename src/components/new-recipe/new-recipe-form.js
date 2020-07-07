@@ -68,9 +68,9 @@ class NewRecipe extends React.Component {
                     return false;
                 }
         }
-        let data = { formData: this.state, userData: localStorage.getItem('user') }
-        axios.defaults.headers.common["Authorization"] = localStorage.getItem('token');
-        axios.post("http://localhost:9000/api/task", data).then(res => {
+        let data = { formData: this.state, userData: sessionStorage.getItem('user') }
+        axios.defaults.headers.common["Authorization"] = sessionStorage.getItem('token');
+        axios.post("http://3.136.11.92:8083/users/newrecipe", data).then(res => {
             if(res.data.success) NotificationManager.success(res.data.msg);
         }).catch(error => {
             if(error.response.status && error.response.status===400)
