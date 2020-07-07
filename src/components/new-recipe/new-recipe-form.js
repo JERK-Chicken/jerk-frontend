@@ -68,9 +68,9 @@ class NewRecipe extends React.Component {
                     return false;
                 }
         }
-        let data = { formData: this.state, userData: localStorage.getItem('user') }
-        axios.defaults.headers.common["Authorization"] = localStorage.getItem('token');
-        axios.post("http://localhost:9000/api/task", data).then(res => {
+        let data = { formData: this.state, userData: sessionStorage.getItem('user') }
+        axios.defaults.headers.common["Authorization"] = sessionStorage.getItem('token');
+        axios.post("http://3.136.11.92:8083/users/newrecipe", data).then(res => {
             if(res.data.success) NotificationManager.success(res.data.msg);
         }).catch(error => {
             if(error.response.status && error.response.status===400)
@@ -151,7 +151,10 @@ class NewRecipe extends React.Component {
                                         </tfoot>
                                     </table>
                                 </div>
-                                <div className="card-footer text-center"> <button type="submit" className="btn btn-primary text-center">Submit</button></div>
+                                <div className="row card-footer justify-content-between">
+                                    <button type="submit" className="btn btn-primary text-center">Submit</button>
+                                    <a class="btn btn-danger" href="/user" role="button">Cancel</a>
+                                </div>
                             </div>
                         </div>
                         <div className="col-sm-1"></div>
