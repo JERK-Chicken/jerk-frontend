@@ -1,47 +1,33 @@
 import React from 'react';
+import RecipeBook from './recipe-book';
+import UserRecipe from './user-information';
 
 function UserApp() {
 
   return (
-      <div className="content">
-              <div className="row" style={{ marginTop: 20 }}>
-                  <div className="col-sm-1"></div>
-                  <div className="col-sm-8">
-                      <div className="card">
-                          <div className="card-header text-center">Add a New Recipe</div>
-                          <div className="card-body">
-                              <div className="row">
-                                  <div className="col-sm-4">
-                                      <div className="form-group ">
-                                          <label className="required">Recipe Name</label>
-                                          <input type="text"  name="date" id="date" className="form-control" />
-                                      </div>
-                                  </div>
-                                  <div className="col-sm-4">
-                                      <div className="form-group ">
-                                          <label className="required">Prep Time</label>
-                                          <input type="int"  id="PrepTime" className="form-control"></input>
-                                      </div>
-                                  </div>
-                                  <div className="col-sm-4">
-                                      <div className="form-group ">
-                                          <label className="required">Cook Time</label>
-                                          <input type="int"  id="cookTime" className="form-control"></input>
-                                      </div>
-                                  </div>
-                              </div>                                
-                              <table className="table">
-                                  
-                              </table>
-                              <table className="table">
-                                  
-                              </table>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-      </div>
-  )
+    <div class="container">
+        <div className="row justify-content-end" style={{ marginTop: 20 }}>
+            <div class="card col-5">
+                User Information
+            </div>
+        </div>
+        <div className="row justify-content-between" style={{ marginTop: 20 }}>
+            <div class="card col-6">
+                <h3>Saved Recipes</h3>
+                <RecipeBook></RecipeBook>
+            </div>
+            <div class="card col-5">
+                <h3>Your Recipes</h3>
+                <UserRecipe></UserRecipe>
+                <div className="row justify-content-between">
+                <a class="btn btn-sm btn-success" href="/new-recipe" role="button">Add</a>
+                <button type="button" class="btn btn-info btn-sm">Modify</button>
+                <button type="button" class="btn btn-warning btn-sm">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    )
 }
 
 export default UserApp;

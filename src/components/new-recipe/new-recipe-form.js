@@ -6,45 +6,65 @@ import { NotificationContainer, NotificationManager } from 'react-notifications'
 
 class NewRecipe extends React.Component {
     state = {
-        taskList: [{ index: Math.random(), projectName: "", task: "", taskNotes: "", taskStatus: "" }],
-        date: "",
-        description: "",
+        ingredientList: [{ index: Math.random(), quantity: "", unit: "", category: "", ingredient: "", description: "" }],
+        instructionList: [{ index: Math.random(), instruction: "" }],
+        name: "",
+        prepTime: "",
+        cookTime: "",
     }
 
     handleChange = (e) => {
-        if (["projectName", "task", "taskNotes", "taskStatus"].includes(e.target.name)) {
-            let taskList = [...this.state.taskList]
-            taskList[e.target.dataset.id][e.target.name] = e.target.value;
+        if (["quantity", "unit", "category", "ingredient", "description"].includes(e.target.name)) {
+            let ingredientList = [...this.state.ingredientList]
+            ingredientList[e.target.dataset.id][e.target.name] = e.target.value;
+        } else {
+            this.setState({ [e.target.name]: e.target.value })
+        }
+        if (["instruction"].includes(e.target.name)) {
+            let instructionList = [...this.state.ingredientList]
+            instructionList[e.target.dataset.id][e.target.name] = e.target.value;
         } else {
             this.setState({ [e.target.name]: e.target.value })
         }
     }
     addNewRow = (e) => {
         this.setState((prevState) => ({
-            taskList: [...prevState.taskList, { index: Math.random(), projectName: "", task: "", taskNotes: "", taskStatus: "" }],
+            ingredientList: [...prevState.ingredientList, { index: Math.random(), quantity: "", unit: "", category: "", ingredient: "", description: "" }],
+        }));
+        this.setState((prevState) => ({
+            instructionList: [...prevState.instructionList, { index: Math.random(), instruction: "" }],
         }));
     }
 
     deteteRow = (index) => {
         this.setState({
-            taskList: this.state.taskList.filter((s, sindex) => index !== sindex),
+            ingredientList: this.state.ingredientList.filter((s, sindex) => index !== sindex),
         });
-        // const taskList1 = [...this.state.taskList];
-        // taskList1.splice(index, 1);
-        // this.setState({ taskList: taskList1 });
+        this.setState({
+            instructionList: this.state.instructionList.filter((s, sindex) => index !== sindex),
+        });
     }
+
     handleSubmit = (e) => {
         e.preventDefault();
-        if(this.state.date==='' || this.state.description==='')
+        if(this.state.name==='' || this.state.prepTime==='' || this.state.cookTime==='')
         {
-            NotificationManager.warning("Please Fill up Required Field . Please check Task and Date Field");
+            NotificationManager.warning("Please input required Fields");
             return false;
         }
-        for(var i=0;i<this.state.taskList.length;i++)
+        for(var i=0;i<this.state.ingredientList.length;i++)
         {
-                if(this.state.taskList[i].projectName==='' || this.state.taskList[i].task==='')
+                if(this.state.ingredientList[i].quantity==='' || this.state.ingredientList[i].unit==='' || this.state.ingredientList[i].description==='')
                 {
-                    NotificationManager.warning("Please Fill up Required Field.Please Check Project name And Task Field");
+                    NotificationManager.warning("Please include Quantity. Unit, and Description");
+                    return false;
+                }
+        }
+        for(var j=0;j<this.state.instructionList.length;j++)
+        {
+                if(this.state.instructionList[j].instructions==='')
+                {
+                    NotificationManager.warning("Please include Instructions");
                     return false;
                 }
         }
@@ -61,13 +81,17 @@ class NewRecipe extends React.Component {
     }
     clickOnDelete(record) {
         this.setState({
-            taskList: this.state.taskList.filter(r => r !== record)
+            ingredientList: this.state.ingredientList.filter(r => r !== record)
+        });
+        this.setState({
+            instructionList: this.state.instructionList.filter(r => r !== record)
         });
     }
     render() {
-        let { taskList } = this.state//let { notes, date, description, taskList } = this.state
+        let { ingredientList } = this.state
+        let { instructionList } = this.state
         return (
-            <div className="content">
+            <div className="content container-fluid">
                 <NotificationContainer/>
                 <form onSubmit={this.handleSubmit} onChange={this.handleChange} >
                     <div className="row" style={{ marginTop: 20 }}>
@@ -83,27 +107,27 @@ class NewRecipe extends React.Component {
                                                 <input type="text"  name="date" id="date" className="form-control" />
                                             </div>
                                         </div>
-                                        <div className="col-sm-4">
+                                        <div className="col-sm-1">
                                             <div className="form-group ">
                                                 <label className="required">Prep Time</label>
-                                                <input type="int"  id="PrepTime" className="form-control"></input>
+                                                <input type="number"  id="PrepTime" className="form-control"></input>
                                             </div>
                                         </div>
-                                        <div className="col-sm-4">
+                                        <div className="col-sm-1">
                                             <div className="form-group ">
                                                 <label className="required">Cook Time</label>
-                                                <input type="int"  id="cookTime" className="form-control"></input>
+                                                <input type="number"  id="cookTime" className="form-control"></input>
                                             </div>
                                         </div>
                                     </div>                                
                                     <table className="table">
                                         <thead>
                                             <tr>
-                                                <th className="required" >Ingredients</th>                                                
+                                                <th className="required">Ingredients</th>                                                
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <IngredientList add={this.addNewRow} delete={this.clickOnDelete.bind(this)} taskList={taskList} />
+                                            <IngredientList add={this.addNewRow} delete={this.clickOnDelete.bind(this)} ingredientList={ingredientList} />
                                         </tbody>
                                         <tfoot>
                                             <tr><td colSpan="4">
@@ -114,11 +138,11 @@ class NewRecipe extends React.Component {
                                     <table className="table">
                                         <thead>
                                             <tr>
-                                                <th className="required" >Instructions</th>                                                
+                                                <th className="required">Instructions</th>                                                
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <InstructionList add={this.addNewRow} delete={this.clickOnDelete.bind(this)} taskList={taskList} />
+                                            <InstructionList add={this.addNewRow} delete={this.clickOnDelete.bind(this)} instructionList={instructionList} />
                                         </tbody>
                                         <tfoot>
                                             <tr><td colSpan="4">
