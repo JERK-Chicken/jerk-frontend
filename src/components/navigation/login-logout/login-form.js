@@ -1,10 +1,12 @@
 import React from "react";
 import axios from "axios";
-// import jwt from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import { connect } from "react-redux";
 import FormInput from "../../general/form-input-component";
 import Register from "./register-component";
-import {logIn} from '../../../redux/actions/logging-actions'
+import {logIn} from '../../../redux/actions/logging-actions';
+import {loadUsername} from '../../../redux/actions/loading-actions';
+import {loadUserRoles} from '../../../redux/actions/loading-actions';
 
 const LoginForm = (props) => {
   const submitLogin = (e) => {
@@ -13,18 +15,16 @@ const LoginForm = (props) => {
       try {
         console.log("POST body:", props.credentials);
         const response = await axios.post("/users/login", props.credentials);
-        // const data = jwt.decode(response.data);
+
+        const data = jwt.decode(response.data);
+        // console.log(data);
+        props.loadUsername(data.username);
+        props.loadUserRoles(data.roles);
 
 
         props.logIn(response.data);
     
-        // if(data.roles === 'admin'){
-        //   props.history.push('/admin')
-        // } else{
-        //   if(data.roles === 'user'){
-        //     props.history.push('/user')
-        //   }
-        // }
+
       } 
       catch (error) {
         console.error(error);
@@ -47,8 +47,9 @@ const LoginForm = (props) => {
 
 function mapDispatchToProps(dispatch) {
   return {
-    logIn: (token) =>
-      dispatch(logIn(token)),
+    logIn: (token) => dispatch(logIn(token)),
+    loadUsername: (username) => dispatch(loadUsername(username)),
+    loadUserRoles: (roles) => dispatch(loadUserRoles(roles)),
   };
 }
 
