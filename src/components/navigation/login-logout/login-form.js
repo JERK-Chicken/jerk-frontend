@@ -15,8 +15,6 @@ const LoginForm = (props) => {
         const response = await axios.post("/users/login", props.credentials);
         // const data = jwt.decode(response.data);
 
-        // console.log(data);
-        console.log(response);
 
         props.logIn(response.data);
     
@@ -49,8 +47,8 @@ const LoginForm = (props) => {
 
 function mapDispatchToProps(dispatch) {
   return {
-    logIn: () =>
-      dispatch(logIn()),
+    logIn: (token) =>
+      dispatch(logIn(token)),
   };
 }
 
