@@ -31,6 +31,11 @@ const Footer = () => {
             User
           </Link>
         </li>
+        <li className="nav-item">
+          <Link to="/new-recipe" className="nav-link">
+            New Recipe
+          </Link>
+        </li>
       </ul>
     </div>
     </nav>

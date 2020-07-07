@@ -11,6 +11,7 @@ import Legal from "./components/navigation/footers/legal-component";
 import UserApp from './components/user/User';
 import AdminApp from './components/admin/Admin';
 import Header from './components/navigation/home-header-component';
+import NewRecipe from "./components/new-recipe/new-recipe-component";
 
 axios.defaults.baseURL = "http://3.136.11.92:8083";
 // axios.defaults.withCredentials = true;
@@ -39,6 +40,9 @@ function App() {
         </Route>
         <Route path="/user" exact>
           <UserApp></UserApp>
+        </Route>
+        <Route path="/new-recipe" exact>
+          <NewRecipe></NewRecipe>
         </Route>
         <Route>
           <NotFound></NotFound>

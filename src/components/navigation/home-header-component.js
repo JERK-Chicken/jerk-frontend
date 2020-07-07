@@ -8,7 +8,7 @@ const Header = (props) => {
     
     return (
     <div id="nav">
-        <nav className="navbar navbar-expand-md bg-warning fixed-top">
+        <nav className="navbar navbar-expand-md bg-warning">
             <a className="navbar-brand" href="/"><img src="jerklogo.png" alt="logo" width="140" height="50"></img></a>
             <ul className="navbar-nav ml-auto">
                 <li className="nav-item">

@@ -29,7 +29,6 @@ const NewRecipe = (props) => {
   return (
     <div>
       <div  className = "form">
-      <h5>Add a new Recipe!</h5>
       <NewRecipeForm
         onSubmit={handleSubmit}
         onChange={handleChange}
