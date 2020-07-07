@@ -1,16 +1,14 @@
 import axios from "axios";
 
-export async function requestIngredients(category) {
+export async function requestIngredients(setIngredients, category) {
     try {
         let response;
         if (category) {
-            response = await axios.get("/ingredients/basket", {'params': {'category': 'Meat'}});
+            response = await axios.get("/ingredients/basket", {'params': {'category': category}});
         } else {
             response = await axios.get("/ingredients/basket");
         }
-        
-        // return response;
-        console.log(response);
+        setIngredients(response.data);
       } 
       catch (error) {
         console.error(error);

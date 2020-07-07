@@ -1,10 +1,15 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {requestIngredients, requestCategories} from "../../../helpers/requests/ingredient-requests";
 import { connect } from "react-redux";
 import {loadCategories} from "../../../redux/actions/loading-actions"
 
 const AddToBasketForm = (props) => {
     const [selectedIngredient, setSelectedIngredient] = useState({id : "", name : ""});
+    const [ingredients, setIngredients] = useState([]);
+
+    useEffect(() => {
+        (async _ => requestIngredients(setIngredients))();
+    }, []);
 
     const handleIngredientChange = (e) => {
         e.preventDefault();
@@ -12,8 +17,8 @@ const AddToBasketForm = (props) => {
     }
 
     const handleCategoryChange = (e) => {
-        e.preventDefault();
-        (async _ => requestIngredients("Meat"))();
+        const category = e.target.value === "null" ? "" : e.target.value;
+        (async _ => requestIngredients(setIngredients, category))();
     };
 
     const handleCategoryClick = () => {
@@ -23,14 +28,20 @@ const AddToBasketForm = (props) => {
         (async _ => requestCategories(props.loadCategories))();
     }
 
+    const handleSubmit = () => {
+        props.setBasket([...props.basket, selectedIngredient])
+    }
+
     const categoryDropList = () => {
         return props.categories.map((obj) => 
             <option key={obj.id} value={obj.category}>{obj.category}</option>
         )
     }
 
-    const handleSubmit = () => {
-        props.setBasket([...props.basket, selectedIngredient])
+    const ingredientDropList = () => {
+        return ingredients.map((obj) => 
+            <option key={`ingredient_drop_${obj.id}`} value={obj.name}>{obj.name}</option>
+        )
     }
 
     return (
@@ -46,9 +57,7 @@ const AddToBasketForm = (props) => {
                 <div className="form-group mb-2">
                     <select name="ingredient" onChange={handleIngredientChange}>
                         <option value="null">- Ingredient -</option>
-                        <option value="strawberry">Strawberry</option>
-                        <option value="blueberry">Blueberry</option>
-                        <option value="cranberry">Cranberry</option>
+                        {ingredientDropList()}
                     </select>
                 </div>
             </form>
