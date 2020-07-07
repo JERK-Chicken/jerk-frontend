@@ -17,14 +17,9 @@ const LoginForm = (props) => {
         const response = await axios.post("/users/login", props.credentials);
 
         const data = jwt.decode(response.data);
-        // console.log(data);
         props.loadUsername(data.username);
         props.loadUserRoles(data.roles);
-
-
         props.logIn(response.data);
-    
-
       } 
       catch (error) {
         console.error(error);
