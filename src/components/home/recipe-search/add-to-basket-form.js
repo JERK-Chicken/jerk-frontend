@@ -1,6 +1,16 @@
-import React from "react";
+import React, {useState} from "react";
 
-const AddToBasketForm = () => {
+const AddToBasketForm = (props) => {
+    const [selectedIngredient, setSelectedIngredient] = useState({id : "", name : ""});
+
+    const handleIngredientChange = (e) => {
+        setSelectedIngredient({"name":e.target.value});
+    }
+
+    const handleSubmit = () => {
+        props.setBasket([...props.basket, selectedIngredient])
+    }
+
     return (
         <div>
             <h3>This is a AddToBasketForm component...</h3>
@@ -13,14 +23,14 @@ const AddToBasketForm = () => {
                     </select>
                 </div>
                 <div className="form-group mb-2">
-                    <select onChange={()=>console.log("!!!")} name="ingredient">
-                        <option value="Strawberry">Strawberry</option>
-                        <option value="Blueberry">Blueberry</option>
-                        <option value="Cranberry">Cranberry</option>
+                    <select onChange={handleIngredientChange} name="ingredient">
+                        <option value="strawberry">Strawberry</option>
+                        <option value="blueberry">Blueberry</option>
+                        <option value="cranberry">Cranberry</option>
                     </select>
                 </div>
             </form>
-            <button className="btn btn-primary mb-2">Add Ingredient</button>
+            <button className="btn btn-primary mb-2" onClick={handleSubmit}>Add Ingredient</button>
         </div>
     );
 };

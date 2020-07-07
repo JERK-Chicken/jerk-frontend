@@ -1,20 +1,19 @@
 import React from "react";
 
-const Basket = () => {
+const Basket = (props) => {
+    function tableBody() {
+        return props.basket.map((ingredient) => 
+            <tr><td>{ingredient.name}</td></tr>
+        );
+    }
+
+    
     return (
         <div>
             <h3>This is a Basket component...</h3>
             <table className="table table-hover table-dark">
                 <tbody>
-                    <tr>
-                        <td>Strawberry</td>
-                    </tr>
-                    <tr>
-                        <td>Blueberry</td>
-                    </tr>
-                    <tr>
-                        <td>Cranberry</td>
-                    </tr>
+                    {tableBody()}
                 </tbody>
             </table>
         </div>
