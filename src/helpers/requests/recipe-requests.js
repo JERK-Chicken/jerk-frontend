@@ -12,7 +12,7 @@ export async function requestRecipesContaining(setRecipes, ingredientIds) {
 
 export async function requestRecipesLimitedTo(setRecipes, ingredientIds) {
     try {
-        const response = await axios.post("/ingredients/search", ingredientIds);
+        const response = await axios.post("/ingredients/strict-search", ingredientIds);
         setRecipes(response.data);
       } 
       catch (error) {
