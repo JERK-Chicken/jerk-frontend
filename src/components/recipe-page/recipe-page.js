@@ -3,7 +3,20 @@ import React from 'react';
 function RecipePage() {
 
   return (
-      <div>Hello World</div>
+    <div className="container">
+          <div style={{ marginTop: 20 }}>
+            <div className="card">
+                <div className="card-header"><h3>View Recipe</h3></div>
+                <div className="card-body">
+                    <p>Hello Clarice</p>
+                </div>
+                <div className="row card-footer justify-content-between">
+                    <button type="button" class="btn btn-success">Save Recipe</button>
+                    <a class="btn btn-danger" href="/" role="button">Return to Basket</a>
+                </div>
+            </div>
+        </div>
+    </div>
   )
 };
 

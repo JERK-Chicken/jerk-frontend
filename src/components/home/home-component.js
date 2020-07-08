@@ -19,7 +19,6 @@ const Home = () => {
             <Basket basket={basket} setBasket={setBasket}/>
             </div>
             <div class="col-6">
-            
             </div>
             </div>
         </div>
