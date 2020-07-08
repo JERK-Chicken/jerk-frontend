@@ -54,10 +54,9 @@ const AddToBasketForm = (props) => {
     }
 
     return (
-        <div style={{ marginTop: 20 }}>
-            
+        <div style={{ marginTop: 20 }}>            
             <div className="card">
-            <div className="card-header"><h3>Add to Basket Form</h3></div>
+            <div className="card-header"><h3>Add to Your Basket</h3></div>
             <div className="card-body">
             <form className="row justify-content-around">
                 <div>

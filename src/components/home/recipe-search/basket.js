@@ -1,5 +1,8 @@
 import React, {useState} from "react";
+import { connect } from "react-redux";
 import {requestRecipesContaining, requestRecipesLimitedTo} from "../../../helpers/requests/recipe-requests"
+import UserRadio from "./user-limit-radio";
+import NonUserRadio from "./disabled-radio";
 
 const Basket = (props) => {
     const [containingSearch, setContainingSearch] = useState(false);
@@ -35,6 +38,8 @@ const Basket = (props) => {
         setContainingSearch(false);
         setLimitedToSearch(true);
     }
+    
+    let loggingRadio = props.isLoggedIn ?<UserRadio/> : <NonUserRadio/>;
 
     return (
         <div style={{ marginTop: 20 }}>
@@ -51,7 +56,7 @@ const Basket = (props) => {
                 <div className="form-check-inline">
                     <label className="form-check-label">
                     <input type="radio" className="form-check-input" name="optradio" onChange={setContainingMode}/>
-                    Any Recipe            
+                    Contains these Ingredients            
                     </label>
                 </div>
                 <div className="form-check-inline">
@@ -59,10 +64,15 @@ const Basket = (props) => {
                     <input type="radio" className="form-check-input" name="optradio" onChange={setLimitedMode}/>
                     Only these Ingredients
                     </label>
-                </div>
+                </div> 
+                <div className="form-check-inline">
+                {loggingRadio}                    
+                </div> 
+            </div>
+            <div className="row justify-content-end">               
                 <button className="btn btn-primary mb-2" onClick={handleSubmit}>
                     Search for recipes
-                </button>
+                </button>                
             </div>
             </div>
             </div>
@@ -70,5 +80,11 @@ const Basket = (props) => {
     );
 };
 
-export default Basket;
+function mapStateToProps(store) {
+    return {
+        isLoggedIn : store.isLoggedIn,
+    };
+}
+
+export default connect(mapStateToProps)(Basket);
 
