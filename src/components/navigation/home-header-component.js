@@ -1,7 +1,7 @@
 import React from "react";
 import {withRouter} from "react-router-dom";
 import { connect } from "react-redux";
-import LoginButton from "./login-logout/login-button";
+import LoginButton from "./login-logout/login/login-button";
 import LogoutButton from "./login-logout/logout-button";
 
 const Header = (props) => {

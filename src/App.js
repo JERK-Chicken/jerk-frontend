@@ -12,7 +12,7 @@ import UserApp from './components/user/User';
 import AdminApp from './components/admin/Admin';
 import Header from './components/navigation/home-header-component';
 import NewRecipe from "./components/new-recipe/new-recipe-component";
-import Register from './components/navigation/login-logout/register-component';
+import Register from './components/navigation/login-logout/register/register-modal';
 
 axios.defaults.baseURL = "http://3.136.11.92:8083";
 // axios.defaults.withCredentials = true;
