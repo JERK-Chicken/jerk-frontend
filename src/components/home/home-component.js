@@ -9,17 +9,16 @@ const Home = () => {
     return (
         <div className="container-fluid">
             <div className="row justify-content-around">
-            <div class="col-5">
+            <div className="col-5">
             <AddToBasketForm basket={basket} setBasket={setBasket}/>
             </div>
-            <div class="col-6"><RecipeResults/></div>        
+            <div className="col-6"><RecipeResults/></div>        
             </div>
             <div className="row justify-content-around">            
-            <div class="col-5">
+            <div className="col-5">
             <Basket basket={basket} setBasket={setBasket}/>
             </div>
-            <div class="col-6">
-            
+            <div className="col-6">
             </div>
             </div>
         </div>

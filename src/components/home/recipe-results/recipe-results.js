@@ -16,7 +16,7 @@ const RecipeResults = () => {
             </div>
             <div className="card-footer">
             <div className="row justify-content-end">
-            <a class="btn btn-primary" href="/recipe-page" role="button">Select Recipes</a>
+            <a className="btn btn-primary" href="/recipe-page" role="button">Select Recipes</a>
             </div>
             </div>
         </div>
