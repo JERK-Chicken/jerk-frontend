@@ -13,6 +13,7 @@ import AdminApp from './components/admin/Admin';
 import Header from './components/navigation/home-header-component';
 import NewRecipe from "./components/new-recipe/new-recipe-component";
 import Register from './components/navigation/login-logout/register-component';
+import RecipePage from './components/recipe-page/recipe-page';
 
 axios.defaults.baseURL = "http://3.136.11.92:8083";
 // axios.defaults.withCredentials = true;
@@ -47,6 +48,9 @@ function App() {
         </Route>
         <Route path="/register" exact>
           <Register></Register>
+        </Route>
+        <Route path="/recipe-page" exact>
+          <RecipePage></RecipePage>
         </Route>
         <Route>
           <NotFound></NotFound>
