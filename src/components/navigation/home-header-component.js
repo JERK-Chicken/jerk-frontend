@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import LoginButton from "./login-logout/login-button";
 import LogoutButton from "./login-logout/logout-button";
 import UserButton from "../user/user-button";
+//import AdminButton from "../admin/admin-button";
 
 const Header = (props) => {
     let loggingButton = props.isLoggedIn ? 
@@ -18,7 +19,7 @@ const Header = (props) => {
             <ul className="navbar-nav ml-auto">                
                 <li className="nav-item">
                     {loggingButton}
-                </li>                
+                </li>               
             </ul>
         </nav>
     </div>

@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Admin() {
+function DevRecipe() {
 
   return (
     <div className="container">
           <div style={{ marginTop: 20 }}>
             <div className="card">
-                <div className="card-header"><h3>Admin</h3></div>
+                <div className="card-header"><h3>Dev Recipe</h3></div>
                 <div className="card-body">
                     <p>Hello Clarice</p>
                 </div>
@@ -20,4 +20,4 @@ function Admin() {
   )
 };
 
-export default Admin;
+export default DevRecipe;
