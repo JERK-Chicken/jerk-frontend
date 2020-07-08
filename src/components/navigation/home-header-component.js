@@ -1,4 +1,5 @@
 import React from "react";
+import {withRouter} from "react-router-dom";
 import { connect } from "react-redux";
 import LoginButton from "./login-logout/login-button";
 import LogoutButton from "./login-logout/logout-button";
@@ -12,7 +13,7 @@ const Header = (props) => {
             <a className="navbar-brand" href="/"><img src="jerklogo.png" alt="logo" width="140" height="50"></img></a>
             <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
-                  {loggingButton}
+                    {loggingButton}
                 </li>
             </ul>
         </nav>
@@ -26,4 +27,4 @@ function mapStateToProps(store) {
     };
 }
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps)(withRouter(Header));

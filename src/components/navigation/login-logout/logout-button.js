@@ -1,22 +1,13 @@
 import React from "react";
+import {withRouter} from "react-router-dom";
 import { connect } from "react-redux";
-// import axios from "axios";
-// import { withRouter } from "react-router-dom";
 import {logOut} from '../../../redux/actions/logging-actions'
 
 const LogoutButton = (props) => {
     const submitLogout = (e) =>{
         e.preventDefault();
-        (async _ =>{
-            // try{
-            //     const logoutResult = await axios.get("http://13.59.52.148:8082/auth/logout",logout);
-            //     sessionStorage.clear(logoutResult.data.token);
-            //     props.history.push ('/');
-            // } catch(err){
-            //     console.log(err)
-            // }
-            props.logOut();
-        })() 
+        props.logOut();
+        props.history.push('/');
     }
 
     return(
@@ -36,4 +27,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(null, mapDispatchToProps)(LogoutButton);
+export default connect(null, mapDispatchToProps)(withRouter(LogoutButton));
