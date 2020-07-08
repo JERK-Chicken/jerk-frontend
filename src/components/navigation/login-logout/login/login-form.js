@@ -2,18 +2,16 @@ import React from "react";
 import axios from "axios";
 import jwt from "jsonwebtoken";
 import { connect } from "react-redux";
-import FormInput from "../../general/form-input-component";
-import Register from "./register-component";
-import {logIn} from '../../../redux/actions/logging-actions';
-import {loadUsername} from '../../../redux/actions/loading-actions';
-import {loadUserRoles} from '../../../redux/actions/loading-actions';
+import FormInput from "../../../general/form-input-component";
+import {logIn} from '../../../../redux/actions/logging-actions';
+import {loadUsername} from '../../../../redux/actions/loading-actions';
+import {loadUserRoles} from '../../../../redux/actions/loading-actions';
 
 const LoginForm = (props) => {
   const submitLogin = (e) => {
     e.preventDefault();
     (async _ => {
       try {
-        console.log("POST body:", props.credentials);
         const response = await axios.post("/users/login", props.credentials);
 
         const data = jwt.decode(response.data);
@@ -32,10 +30,7 @@ const LoginForm = (props) => {
     <form className = "input-form">
       <FormInput name="username" type="text" onChange={props.onChange}></FormInput>
       <FormInput name="password" type="password" onChange={props.onChange}></FormInput>
-      <button className="btn btn-primary" onClick={submitLogin}>
-        Submit
-      </button>
-        <Register></Register>
+      <button className="btn btn-primary" onClick={submitLogin}>Submit</button>
     </form>
   );
 };
