@@ -11,9 +11,18 @@ const AddToBasketForm = (props) => {
         (async _ => requestIngredients(setIngredients))();
     }, []);
 
+
+    function ingredientId(name) {
+        for (let ing of ingredients) {
+            if (ing.name === name) {
+                return ing.id;
+            }
+        }
+    }
+
     const handleIngredientChange = (e) => {
         e.preventDefault();
-        setSelectedIngredient({"name" : e.target.value});
+        setSelectedIngredient({"name" : e.target.value, "id" : ingredientId(e.target.value)});
     }
 
     const handleCategoryChange = (e) => {
