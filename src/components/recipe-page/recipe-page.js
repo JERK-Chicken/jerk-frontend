@@ -11,8 +11,8 @@ function RecipePage() {
                     <p>Hello Clarice</p>
                 </div>
                 <div className="row card-footer justify-content-between">
-                    <button type="button" class="btn btn-success">Save Recipe</button>
-                    <a class="btn btn-danger" href="/" role="button">Return to Basket</a>
+                    <button type="button" className="btn btn-success">Save Recipe</button>
+                    <a className="btn btn-danger" href="/" role="button">Return to Basket</a>
                 </div>
             </div>
         </div>
