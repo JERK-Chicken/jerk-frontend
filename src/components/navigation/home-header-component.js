@@ -6,6 +6,7 @@ import LogoutButton from "./login-logout/logout-button";
 import UserButton from "../user/user-button";
 //import AdminButton from "../admin/admin-button";
 
+
 const Header = (props) => {
     let loggingButton = props.isLoggedIn ? 
         <div className="row justify-content-around">
@@ -19,7 +20,11 @@ const Header = (props) => {
             <ul className="navbar-nav ml-auto">                
                 <li className="nav-item">
                     {loggingButton}
-                </li>               
+                </li>
+
+                {/* <li className="nav-item dropdown">
+                    <AdminButton/>
+                </li>                */}
             </ul>
         </nav>
     </div>
