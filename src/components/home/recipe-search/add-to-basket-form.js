@@ -45,23 +45,32 @@ const AddToBasketForm = (props) => {
     }
 
     return (
-        <div>
-            <h3>This is a AddToBasketForm component...</h3>
-            <form className="form-inline">
-                <div className="form-group mb-2">
-                    <select name="category" onClick={handleCategoryClick} onChange={handleCategoryChange}>
+        <div style={{ marginTop: 20 }}>
+            
+            <div className="card">
+            <div className="card-header"><h3>Add to Basket Form</h3></div>
+            <div className="card-body">
+            <form className="row justify-content-around">
+                <td>
+                    <select className="form-control" name="category" onClick={handleCategoryClick} onChange={handleCategoryChange}>
                         <option value="null">- Category -</option>
                         {categoryDropList()}
                     </select>
-                </div>
-                <div className="form-group mb-2">
-                    <select name="ingredient" onChange={handleIngredientChange}>
+                </td>
+                <td>
+                    <select className="form-control" name="ingredient" onChange={handleIngredientChange}>
                         <option value="null">- Ingredient -</option>
                         {ingredientDropList()}
                     </select>
-                </div>
+                </td>               
             </form>
+            </div>
+            <div className="card-footer">
+                <div className="row justify-content-end">
             <button className="btn btn-primary mb-2" onClick={handleSubmit}>Add Ingredient</button>
+            </div>
+            </div>
+            </div>
         </div>
     );
 };
