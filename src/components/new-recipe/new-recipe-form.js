@@ -27,6 +27,7 @@ class NewRecipe extends React.Component {
             this.setState({ [e.target.name]: e.target.value })
         }
     }
+
     addNewRow = (e) => {
         this.setState((prevState) => ({
             ingredientList: [...prevState.ingredientList, { index: Math.random(), quantity: "", unit: "", category: "", ingredient: "", description: "" }],
@@ -79,6 +80,7 @@ class NewRecipe extends React.Component {
             this.setState({ errors: error })
         });
     }
+
     clickOnDelete(record) {
         this.setState({
             ingredientList: this.state.ingredientList.filter(r => r !== record)
@@ -87,9 +89,12 @@ class NewRecipe extends React.Component {
             instructionList: this.state.instructionList.filter(r => r !== record)
         });
     }
+
     render() {
         let { ingredientList } = this.state
         let { instructionList } = this.state
+        // console.log(ingredientList);
+        // console.log(instructionList);
         return (
             <div className="content container-fluid">
                 <NotificationContainer/>

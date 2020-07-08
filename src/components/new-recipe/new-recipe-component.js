@@ -10,7 +10,7 @@ const NewRecipe = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://3.136.11.92:8083/recipes",recipe, {headers :{'x-access-token':`${token}`}})
+      .post("/recipes",recipe, {headers :{'x-access-token':`${token}`}})
       .then(() => {
         console.log(`success! posted: ${recipe}`);
         props.history.push("/user/recipe");
@@ -28,7 +28,7 @@ const NewRecipe = (props) => {
 
   return (
     <div>
-      <div  className = "form">
+      <div className = "form">
       <NewRecipeForm
         onSubmit={handleSubmit}
         onChange={handleChange}
