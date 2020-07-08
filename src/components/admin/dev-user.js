@@ -1,12 +1,12 @@
 import React from 'react';
 
-function RecipePage() {
+function DevUser() {
 
   return (
     <div className="container">
           <div style={{ marginTop: 20 }}>
             <div className="card">
-                <div className="card-header"><h3>View Recipe</h3></div>
+                <div className="card-header"><h3>Dev User</h3></div>
                 <div className="card-body">
                     <p>Hello Clarice</p>
                 </div>
@@ -20,4 +20,4 @@ function RecipePage() {
   )
 };
 
-export default RecipePage;
+export default DevUser;

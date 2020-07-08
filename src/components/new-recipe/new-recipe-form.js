@@ -153,7 +153,7 @@ class NewRecipe extends React.Component {
                                 </div>
                                 <div className="row card-footer justify-content-between">
                                     <button type="submit" className="btn btn-primary text-center">Submit</button>
-                                    <a class="btn btn-danger" href="/user" role="button">Cancel</a>
+                                    <a className="btn btn-danger" href="/user" role="button">Cancel</a>
                                 </div>
                             </div>
                         </div>

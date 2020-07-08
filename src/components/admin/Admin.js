@@ -1,20 +1,23 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Home from "../home/home-component";
 
-function AdminApp() {
+function Admin() {
 
   return (
-    <div className="container-fluid">
-      <Router>
-        <Switch>
-        <Route path="/" exact>
-          <Home></Home>
-        </Route>
-        </Switch>
-      </Router>
+    <div className="container">
+          <div style={{ marginTop: 20 }}>
+            <div className="card">
+                <div className="card-header"><h3>Admin</h3></div>
+                <div className="card-body">
+                    <p>Hello Clarice</p>
+                </div>
+                <div className="row card-footer justify-content-between">
+                    <button type="button" className="btn btn-success">Save Recipe</button>
+                    <a className="btn btn-danger" href="/" role="button">Return to Basket</a>
+                </div>
+            </div>
+        </div>
     </div>
-  );
-}
+  )
+};
 
-export default AdminApp;
+export default Admin;
