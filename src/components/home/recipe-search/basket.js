@@ -20,13 +20,13 @@ const Basket = (props) => {
             </div>
             <div className="card-footer">
             <div className="row justify-content-between">
-            <div class="form-check-inline">
-            <label class="form-check-label">
-            <input type="radio" classNames="form-check-input" name="optradio"/>Any Recipe            
+            <div className="form-check-inline">
+            <label className="form-check-label">
+            <input type="radio" className="form-check-input" name="optradio"/>Any Recipe            
             </label>
             </div>
-            <div class="form-check-inline">
-            <label class="form-check-label">
+            <div className="form-check-inline">
+            <label className="form-check-label">
             <input type="radio" className="form-check-input" name="optradio"/>Only these Ingredients
             </label>
             </div>
