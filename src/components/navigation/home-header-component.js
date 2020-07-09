@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 import {withRouter} from "react-router-dom";
 import { connect } from "react-redux";
 import LoginButton from "./login-logout/login/login-button";
@@ -16,7 +17,7 @@ const Header = (props) => {
     return (
     <div id="nav">
         <nav className="navbar navbar-expand-md bg-warning">
-            <a className="navbar-brand" href="/"><img src="jerklogo.png" alt="logo" width="140" height="50"></img></a>
+            <Link className="navbar-brand" to="/"><img src="jerklogo.png" alt="logo" width="140" height="50"></img></Link>
             <ul className="navbar-nav ml-auto grid-gutter-width: 30px">                
                 <li className="nav-item">
                     {loggingButton}

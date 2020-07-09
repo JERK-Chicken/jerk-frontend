@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 
 
 function UserButton() { 
@@ -6,7 +7,7 @@ function UserButton() {
   return (
     <div>
       <div className="red-button">
-      <a className="btn text-white btn-lg" href="/user" role="button">Dashboard</a>
+      <Link className="btn text-white btn-lg" to="/user" role="button">Dashboard</Link>
       </div>
     </div>   
   );

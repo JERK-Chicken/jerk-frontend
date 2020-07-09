@@ -7,7 +7,7 @@ function UserInfo() {
   return (
         <div>    
             Roles
-            <ul>{info.roles.map((r)=>{return <li>{r.role}</li>})}</ul>
+            <ul>{info.roles.map((r)=>{return <li key={r.role}>{r.role}</li>})}</ul>
         </div>
     )
 }

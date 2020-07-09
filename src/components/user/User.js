@@ -40,7 +40,7 @@ function UserApp() {
                 <div className="card">
                 <div className="card-header"><h3>Saved Recipes</h3></div>
                 <div className="card-body">
-                <div  class ="limit">
+                <div  className ="limit">
                 <RecipeBook></RecipeBook>
                 </div>
                 </div>
