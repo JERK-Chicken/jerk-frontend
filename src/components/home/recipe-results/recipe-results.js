@@ -1,6 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
+import RecipeRow from "./recipe-row";
 
 const RecipeResults = (props) => {
+    const [selectedRecipe, setSelectedRecipe] = useState("");
+
     function searchResults() {
         if (!props.recipes || props.recipes.length === 0) {
             return "No results to show"
@@ -8,12 +11,14 @@ const RecipeResults = (props) => {
         return (
             <table className="table table-hover">
             <tbody>
-                {props.recipes.map((obj) => <tr key={`${obj.name}-row`}><td>{obj.name}</td></tr>)}
+                {props.recipes.map((recipe) => 
+                    <RecipeRow key={recipe.name} data={recipe} setSelectedRecipe={setSelectedRecipe}/>)}
             </tbody>
             </table>
         );
     }
 
+    console.log(selectedRecipe);
     return (
         <div style={{ marginTop: 20 }}>
         <div className="card">
