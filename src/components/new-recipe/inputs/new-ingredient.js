@@ -38,19 +38,19 @@ const IngredientList = (props) => {
           <td>
             <select name="ingredient" id={ingredient} data-id={idx} className="form-control">
               <option value="">-Ingredient-</option>
-              <option value="pending">Chicken</option>
-              <option value="In Progress">Milk</option>
-              <option value="Completed">Beef</option>
-              <option value="Hold">Bread</option>
+              <option value="Chicken">Chicken</option>
+              <option value="Milk">Milk</option>
+              <option value="Beef">Beef</option>
+              <option value="Bread">Bread</option>
             </select>
           </td>
           <td>
           <select name="description" id={description} data-id={idx} className="form-control">
               <option value="">-Description-</option>
-              <option value="pending">Soup</option>
-              <option value="In Progress">Diced</option>
-              <option value="Completed">Fried</option>
-              <option value="Hold">Shredded</option>
+              <option value="Soup">Soup</option>
+              <option value="Diced">Diced</option>
+              <option value="Fried">Fried</option>
+              <option value="Shredded">Shredded</option>
             </select>
           </td>
           <td>
@@ -64,4 +64,5 @@ const IngredientList = (props) => {
     })
   )
 }
-export default IngredientList
+
+export default IngredientList;
