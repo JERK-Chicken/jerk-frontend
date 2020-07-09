@@ -1,6 +1,7 @@
 import React from 'react';
 import RecipeBook from './recipe-book';
 import UserRecipe from './user-recipes';
+import UserInfo from "./user-info";
 
 function UserApp() {
 
@@ -13,7 +14,7 @@ function UserApp() {
             <div className="col-5">
             <div className="card">
                 <div className="card-header"><h3>User Information</h3></div>
-                <div className="card-body"><p>Hello Clarice</p></div>
+                <div className="card-body"><UserInfo/></div>
                 <div className="row card-footer justify-content-between"></div>
                 </div>
             </div>

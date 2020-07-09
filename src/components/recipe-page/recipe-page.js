@@ -1,73 +1,39 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import GetRecipe from "./save-recipe-component";
+import axios from "axios";
+import { withRouter } from "react-router-dom";
 
-async function getRecipe(setRecipe, id){
-  const res = await axios.get(`/recipes/${id}`)
-  setRecipe(res.data);
-}
 
-function RecipePage(props) {
-  const [currRecipe, setRecipe] = useState({});
-  useEffect(()=>{
-    (async_ =>{getRecipe(setRecipe, 5)})();
-  }, []);
+const RecipePage = (props) => {
+  const [recipe, setRecipe] = useState({});
+  const token = sessionStorage.getItem("json-token");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://3.136.11.92:8083/users/recipebook",recipe, {headers :{'x-access-token':`${token}`}})
+      .then(() => {
+        console.log(`success! posted: ${recipe}`);
+        props.history.push("/user");
+      })
+      .catch(() => {
+        console.error(`uh oh, failed request`);
+      });
+  };
 
-  console.log(currRecipe);
-  if(currRecipe.name) return (
-    <div className="container">
-          <div style={{ marginTop: 20 }}>
-            <div className="card">
-                <div className="card-header"><h3>View Recipe</h3></div>
-                <div className="card-body">
-                    <div className="row">
-                      <div className="col-6">
-                        Recipe Name
-                      </div>
-                      <div className="col-3">
-                        Prep Time
-                      </div>
-                      <div className="col-3">
-                        Cook Time
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-6">
-                        {currRecipe.name}
-                      </div>
-                      <div className="col-3">
-                        {currRecipe.prepTime}
-                      </div>
-                      <div className="col-3">
-                        {currRecipe.cookTime}
-                      </div>
-                    </div>
-                    <br/>
-                    <div className="row">
-                      <div className="col-6">
-                        <ul>
-                        {currRecipe.ingredients.map((i)=>{
-                            return <li>{i.qty} {i.unit.longType} {i.name}</li>
-                        })}
-                        </ul>
-                      </div>
-                      <div className="col-6">
-                        <ol>
-                        {currRecipe.steps.map((s)=>{
-                          return <li>{s.instruction}</li>
-                        })}
-                        </ol>
-                      </div>
-                    </div>
-                </div>
-                <div className="row card-footer justify-content-between">
-                    <button type="button" className="btn btn-success">Save Recipe</button>
-                    <a className="btn btn-danger" href="/" role="button">Return to Basket</a>
-                </div>
-            </div>
-        </div>
-    </div>
-  )
-  else return <div></div>
+  const handleChange = (e) => {
+    const inputValue = e.target.value;
+    const inputField = e.target.name;
+    setRecipe({ ...recipe, [inputField]: inputValue });
+  };
+
+  return (
+    <div>
+      <GetRecipe
+        onSubmit={handleSubmit}
+        onChange={handleChange}
+      ></GetRecipe>
+      </div>
+  );
 };
 
-export default RecipePage;
+export default withRouter(RecipePage);
