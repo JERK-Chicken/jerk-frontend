@@ -9,9 +9,9 @@ import InstructionsInput from "./inputs/instructions-input";
 // import { NotificationContainer, NotificationManager } from 'react-notifications';
 
 const NewRecipe = (props) => {
-    const [ingredientList, setIngredientList] = useState([
-        { index: Math.random(), quantity: "", unit: "", category: "", ingredient: "", description: "" }
-    ]);
+    const [ingredientList, setIngredientList] = useState([{ 
+        index: Math.random(), quantity: "", unit: "", category: "", ingredient: "", description: "" 
+    }]);
     const [instructionList, setInstructionList] = useState([
         { index: Math.random(), instruction: "" }
     ]);
@@ -23,6 +23,9 @@ const NewRecipe = (props) => {
         if (["quantity", "unit", "category", "ingredient", "description"].includes(e.target.name)) {
             let temp = [...ingredientList]
             temp[e.target.dataset.id][e.target.name] = e.target.value;
+            if (e.target.dbid) {
+                temp[e.target.dataset.id][`${e.target.name}_id`] = e.target.dbId;
+            }
             setIngredientList(temp);
         } 
         else if (e.target.name === "instruction") {
@@ -96,18 +99,30 @@ const NewRecipe = (props) => {
         // });
     }
     
-    // const buildRecipe = () => {
-    //     const steps = instructionList.map((val, idx) => {
-    //         return {position : idx+1, instruction : val}
-    //     });
-    //     return {
-    //       name : name,
-    //       prepTime : prepTime,
-    //       cookTime : cookTime,
+    const buildRecipe = () => {
+        console.log(ingredientList);
+        const steps = instructionList.map((val, idx) => {
+            return {position : idx+1, instruction : val.instruction}
+        });
+        const ingredients = ingredientList.map((ingr) => {
+            return {
+                qty : ingr.quantity, 
+                unit : ingr.unit,
+                ingredient_id : ingr.ingredient,
+                ingredientDescription : ingr.description,
+                category : ingr.category.split("_")[1],
+            }
+        });
+        return {
+            name : name,
+            prepTime : prepTime,
+            cookTime : cookTime,
+            steps : steps,
+            ingredients : ingredients
+        };
+    }
 
-    //     };
-    //   }
-
+    console.log(buildRecipe());
     return (
         <div className="content container-fluid">
             {/* <NotificationContainer/> */}
