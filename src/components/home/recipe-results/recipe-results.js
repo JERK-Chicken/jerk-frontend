@@ -17,27 +17,27 @@ const RecipeResults = (props) => {
         if (!props.recipes || props.recipes.length === 0) {
             return "No results to show"
         } 
-        return (
-            
+        return (            
             <table className="table table-hover">
             <tbody>
                 {props.recipes.map((recipe) => {
                     let isActive = (selectedRecipe === recipe.id);
                     return <RecipeRow key={recipe.name} data={recipe} isActive={isActive} setSelectedRecipe={setSelectedRecipe}/>;
-                })}
-                    
+                })} 
             </tbody>
             </table>
         );
     }
 
     return (
-        <div class="row1">
+        <div className="row1">
         <div style={{ marginTop: 20 }}>
         <div className="card">
             <div className="card-header"><h3>Recipe Results</h3></div>
+            <div className="limit">
                 <div className="card-body">
                     {searchResults()}
+                </div>
                 </div>
             <div className="card-footer">
                 <div className="row justify-content-end">

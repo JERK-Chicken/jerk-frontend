@@ -45,9 +45,6 @@ div.row1 {
   height: 250px;
 }
 
-div.row2 {
-  height: 200px;
-}
 div.limit {
   height: 200px;
   max-height: 200px;

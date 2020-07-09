@@ -13,6 +13,7 @@ import Register from './components/navigation/login-logout/register/register-mod
 import DevUser from './components/admin/dev-user';
 import DevRecipe from './components/admin/dev-recipe';
 import DevIngredient from './components/admin/dev-ingredient';
+import EditRecipe from './components/edit-recipe/edit-recipe-form';
 
 axios.defaults.baseURL = "http://3.136.11.92:8083";
 // axios.defaults.withCredentials = true;
@@ -50,6 +51,9 @@ function App() {
         </Route>
         <Route path="/dev-ingredient" exact>
           <DevIngredient/>
+        </Route>
+        <Route path="/edit-recipe" exact>
+          <EditRecipe/>
         </Route>
         <Route>
           <NotFound></NotFound>

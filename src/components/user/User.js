@@ -41,7 +41,7 @@ function UserApp() {
                 </div>
                 <div className="row card-footer justify-content-between">
                 <a className="btn btn-sm btn-success" href="/new-recipe" role="button">Add New Recipe</a>
-                <button type="button" className="btn btn-info btn-sm">Modify Recipe</button>
+                <a className="btn btn-info btn-sm" href="/edit-recipe" role="button">Modify Recipe</a>
                 <button type="button" className="btn btn-danger btn-sm">Delete Recipe</button>
                 </div>
                 </div>
