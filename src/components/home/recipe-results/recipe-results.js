@@ -30,7 +30,7 @@ const RecipeResults = (props) => {
     }
 
     return (
-        <div className="row1">
+        <div className="col1">
         <div style={{ marginTop: 20 }}>
         <div className="card">
             <div className="card-header"><h3>Recipe Results</h3></div>
