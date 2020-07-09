@@ -5,7 +5,7 @@ const GeneralTable = (props) => {
   if (props.records && props.records.length > 0) {
     return (
       <div id = "table">
-      <div className="table-wrapper-scroll-y my-custom-scrollbar table-responsive">
+      <div className="table-wrapper-scroll-y my-custom-scrollbar table-responsive table-hover">
       <table className="table">
         <thead>
           <tr>

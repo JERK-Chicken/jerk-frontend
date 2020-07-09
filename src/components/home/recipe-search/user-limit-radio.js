@@ -1,7 +1,7 @@
 import React from "react";
 
-function UserRadio() { 
-
+function UserRadio() {
+    
 
   return (
     <div>

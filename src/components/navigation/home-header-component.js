@@ -17,7 +17,7 @@ const Header = (props) => {
     <div id="nav">
         <nav className="navbar navbar-expand-md bg-warning">
             <a className="navbar-brand" href="/"><img src="jerklogo.png" alt="logo" width="140" height="50"></img></a>
-            <ul className="navbar-nav ml-auto">                
+            <ul className="navbar-nav ml-auto grid-gutter-width: 30px">                
                 <li className="nav-item">
                     {loggingButton}
                 </li>

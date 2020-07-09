@@ -1,9 +1,46 @@
 import React from 'react';
-import { render } from '@testing-library/react';
 import App from './App';
+import { shallow } from "enzyme";
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe("Testing App", () => {
+    const wrapper = shallow(<App />);
+
+    test("renders a single child element", () => {
+        expect(wrapper.children().length).toBe(1);
+    });
+
+    test("renders 10 routes", () => {
+        expect(wrapper.find("Route").length).toBe(10);
+    });
+
+    test("check '/admin' route", () => {
+        expect(wrapper.find("Route[path='/admin']").length).toBe(1);
+    });
+
+    test("check '/user' route", () => {
+        expect(wrapper.find("Route[path='/user']").length).toBe(1);
+    });
+    test("check '/new-recipe' route", () => {
+        expect(wrapper.find("Route[path='/new-recipe']").length).toBe(1);
+    });
+
+    test("check '/register' route", () => {
+        expect(wrapper.find("Route[path='/register']").length).toBe(1);
+    });
+    
+    test("check '/recipe-page' route", () => {
+      expect(wrapper.find("Route[path='/recipe-page']").length).toBe(1);
+    });
+    
+    test("check '/dev-user' route", () => {
+      expect(wrapper.find("Route[path='/dev-user']").length).toBe(1);
+    });
+    
+    test("check '/dev-recipe' route", () => {
+      expect(wrapper.find("Route[path='/dev-recipe']").length).toBe(1);
+    });
+    
+    test("check '/dev-ingredient' route", () => {
+      expect(wrapper.find("Route[path='/dev-ingredient']").length).toBe(1);
+    });
 });
