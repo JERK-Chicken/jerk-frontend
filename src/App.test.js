@@ -43,4 +43,29 @@ describe("Testing App", () => {
     test("check '/dev-ingredient' route", () => {
       expect(wrapper.find("Route[path='/dev-ingredient']").length).toBe(1);
     });
+
+    test("check '/user' corresponding to UserRecipe", () => {
+      expect(
+        wrapper.find("Route[path='/user']").contains("UserRecipe")
+      );
+    });
+
+    test("check '/user' corresponding to RecipeBook", () => {
+      expect(
+        wrapper.find("Route[path='/user']").contains("RecipeBook")
+      );
+    });
+
+    test("check '/' corresponding to RecipeResults", () => {
+      expect(
+        wrapper.find("Route[path='/']").contains("RecipeResults")
+      );
+    });
+
+    test("check '/' corresponding to Basket", () => {
+      expect(
+        wrapper.find("Route[path='/']").contains("Basket")
+      );
+    });
+  
 });
