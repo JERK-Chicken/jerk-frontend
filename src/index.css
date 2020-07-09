@@ -43,8 +43,8 @@ body {
   background-color: rgb(151, 121, 0);
 } */
 
-div.row1 {
-  height: 250px;
+div.col1 {
+  max-height: 250px;
 }
 
 div.limit {

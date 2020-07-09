@@ -8,9 +8,8 @@ const Home = () => {
     const [recipes, setRecipes] = useState([]);
     return (
         <div className="container-fluid">
-            
-            <div className="row justify-content-around">
-                <div className="col-5">
+            <div className="row justify-content-between">
+                <div className="col-6">
                     <AddToBasketForm basket={basket} setBasket={setBasket}/>
                 </div>
                 <div className="col-6">
@@ -18,13 +17,11 @@ const Home = () => {
                 </div>        
             </div>
             
-            <div className="row justify-content-around">            
-                <div className="col-5">
+            <div className="row">            
+                <div className="col-6">
                     <Basket basket={basket} setBasket={setBasket} setRecipes={setRecipes}/>
                 </div>
-                <div className="col-6">
                 
-                </div>
             </div>
         </div>
     );
