@@ -5,7 +5,7 @@ import {requestIngredients, requestCategories} from "../../../helpers/requests/i
 
 const AddToBasketForm = (props) => {
     const [categories, setCategories] = useState([]);
-    const [selectedIngredient, setSelectedIngredient] = useState({id : "", name : ""});
+    const [selectedIngredient, setSelectedIngredient] = useState({});
     const [ingredients, setIngredients] = useState([]);
 
     useEffect(() => {
@@ -36,10 +36,11 @@ const AddToBasketForm = (props) => {
         if (props.categories && props.categories.length > 0) {
             return;
         }
-        (async _ => requestCategories(props.loadCategories))();
+        (async _ => requestCategories(setCategories))();
     }
 
     const handleSubmit = () => {
+        if(!props.basket.includes(selectedIngredient))
         props.setBasket([...props.basket, selectedIngredient])
     }
 
