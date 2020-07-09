@@ -15,9 +15,13 @@ const LoginForm = (props) => {
         const response = await axios.post("/users/login", props.credentials);
 
         const data = jwt.decode(response.data);
-        props.loadUsername(data.username);
-        props.loadUserRoles(data.roles);
-        props.logIn(response.data);
+        if(data){
+          props.loadUsername(data.username);
+          props.loadUserRoles(data.roles);
+          props.logIn(response.data);
+        } else {
+          document.getElementById("incorrect").style.display = "block";
+        }
       } 
       catch (error) {
         console.error(error);
@@ -28,6 +32,7 @@ const LoginForm = (props) => {
 
   return (
     <form className = "input-form">
+      <div id="incorrect" className="alert alert-danger" style={{display: "none"}}>Incorrect username or password</div>
       <FormInput name="username" type="text" onChange={props.onChange}></FormInput>
       <FormInput name="password" type="password" onChange={props.onChange}></FormInput>
       <button className="btn btn-primary" onClick={submitLogin}>Submit</button>
