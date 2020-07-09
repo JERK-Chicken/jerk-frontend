@@ -6,7 +6,7 @@ import IngredientsInput from "./inputs/ingredients-input";
 import InstructionsInput from "./inputs/instructions-input";
 
 // import axios from 'axios';
-// import { NotificationContainer, NotificationManager } from 'react-notifications';
+import { NotificationContainer, NotificationManager } from 'react-notifications';
 
 const NewRecipe = (props) => {
     const [ingredientList, setIngredientList] = useState([{ 
@@ -65,28 +65,41 @@ const NewRecipe = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(ingredientList, instructionList, name, prepTime, cookTime);
-        // if(this.state.name==='' || this.state.prepTime==='' || this.state.cookTime==='')
-        // {
-        //     NotificationManager.warning("Please input required Fields");
-        //     return false;
-        // }
-        // for(var i=0;i<this.state.ingredientList.length;i++)
-        // {
-        //         if(this.state.ingredientList[i].quantity==='' || this.state.ingredientList[i].unit==='' || this.state.ingredientList[i].description==='')
-        //         {
-        //             NotificationManager.warning("Please include Quantity. Unit, and Description");
-        //             return false;
-        //         }
-        // }
-        // for(var j=0;j<this.state.instructionList.length;j++)
-        // {
-        //         if(this.state.instructionList[j].instructions==='')
-        //         {
-        //             NotificationManager.warning("Please include Instructions");
-        //             return false;
-        //         }
-        // }
+        console.log(buildRecipe());
+
+        if (name==='' || prepTime==='' || cookTime==='')
+        {
+            NotificationManager.warning("Please input required top-level fields");
+            return false;
+        }
+
+        if (ingredientList.length === 0 || instructionList.length === 0) {
+            NotificationManager.warning("A recipe must include at least one ingredient and instructional step");
+            return false;
+        }
+
+        for (var i=0; i<ingredientList.length; i++)
+        {
+                if(ingredientList[i].quantity==='' || 
+                    ingredientList[i].unit==='' || 
+                    (ingredientList[i].ingredient==='' && ingredientList[i].description==='')
+                ) {
+                    NotificationManager.warning(
+                        `Please include a quantity, unit, and either ingredient name or description for each ingredient row`
+                    );
+                    return false;
+                }
+        }
+
+        for (var j=0; j<instructionList.length; j++)
+        {
+                if(instructionList[j].instruction === '')
+                {
+                    NotificationManager.warning("Instruction fields may nto be empty");
+                    return false;
+                }
+        }
+
         // let data = { formData: this.state, userData: sessionStorage.getItem('user') }
         // axios.defaults.headers.common["Authorization"] = sessionStorage.getItem('token');
         // axios.post("http://3.136.11.92:8083/users/newrecipe", data).then(res => {
@@ -100,7 +113,6 @@ const NewRecipe = (props) => {
     }
     
     const buildRecipe = () => {
-        console.log(ingredientList);
         const steps = instructionList.map((val, idx) => {
             return {position : idx+1, instruction : val.instruction}
         });
@@ -122,10 +134,9 @@ const NewRecipe = (props) => {
         };
     }
 
-    console.log(buildRecipe());
     return (
         <div className="content container-fluid">
-            {/* <NotificationContainer/> */}
+            
             <form onSubmit={handleSubmit} onChange={handleChange} >
                 <div className="row" style={{ marginTop: 20 }}>
                     <div className="col-sm-1"></div>
@@ -151,6 +162,7 @@ const NewRecipe = (props) => {
                             </div>
                             <div className="row card-footer justify-content-between">
                                 <button type="submit" className="btn btn-primary text-center">Submit</button>
+                                <NotificationContainer/>
                                 <a className="btn btn-danger" href="/user" role="button">Cancel</a>
                             </div>
                         </div>
@@ -158,6 +170,7 @@ const NewRecipe = (props) => {
                     <div className="col-sm-1"></div>
                 </div>
             </form>
+            
         </div>
     )
 }
