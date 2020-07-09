@@ -96,6 +96,18 @@ const NewRecipe = (props) => {
         // });
     }
     
+    // const buildRecipe = () => {
+    //     const steps = instructionList.map((val, idx) => {
+    //         return {position : idx+1, instruction : val}
+    //     });
+    //     return {
+    //       name : name,
+    //       prepTime : prepTime,
+    //       cookTime : cookTime,
+
+    //     };
+    //   }
+
     return (
         <div className="content container-fluid">
             {/* <NotificationContainer/> */}

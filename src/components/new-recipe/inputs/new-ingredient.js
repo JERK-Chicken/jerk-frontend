@@ -12,11 +12,26 @@ const IngredientList = (props) => {
     (async _ => requestDescriptions(setDescriptions))();
   }, []);
 
+  const getIngredientId = (name) => {
+    for (let ingredient of ingredients) {
+      if (ingredient.name === name) {
+        return ingredient.id;
+      }
+    }
+  }
+
   const handleCategoryClick = () => {
     if (props.categories && props.categories.length > 0) {
         return;
     }
     (async _ => requestCategories(props.loadCategories))();
+  }
+
+  const handleUnitClick = () => {
+    if (props.units && props.units.length > 0) {
+        return;
+    }
+    (async _ => requestUnits(props.loadUnits))();
   }
 
   const handleCategoryChange = (e) => {
@@ -25,16 +40,9 @@ const IngredientList = (props) => {
   };
 
   const handleIngredientChange = (e) => {
-    // const ingredient = e.target.value === "" ? "" : e.target.value;
-    // (async _ => requestDescriptions(setDescriptions, ingredient))();
+    const ingredientId = e.target.value === "" ? "" : getIngredientId(e.target.value);
+    (async _ => requestDescriptions(setDescriptions, ingredientId))();
   };
-
-  const handleUnitClick = () => {
-    if (props.units && props.units.length > 0) {
-        return;
-    }
-    (async _ => requestUnits(props.loadUnits))();
-  }
 
   const categoryDropList = () => {
     return props.categories.map((obj) => 
@@ -95,7 +103,6 @@ const IngredientList = (props) => {
           </td>
           <td>
             {
-            
              <button className="btn btn-danger" onClick={(() => props.delete(val))} ><i className="fa fa-minus" aria-hidden="true"></i></button>
             }
           </td>

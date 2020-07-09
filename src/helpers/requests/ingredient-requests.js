@@ -17,6 +17,7 @@ export async function requestIngredients(setIngredients, category) {
 }
 
 export async function requestDescriptions(setDescription, ingredient) {
+  console.log(ingredient);
   try {
     let response;
     if (ingredient) {
