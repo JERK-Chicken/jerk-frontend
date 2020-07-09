@@ -20,8 +20,11 @@ const RecipeResults = (props) => {
         return (
             <table className="table table-hover">
             <tbody>
-                {props.recipes.map((recipe) => 
-                    <RecipeRow key={recipe.name} data={recipe} setSelectedRecipe={setSelectedRecipe}/>)}
+                {props.recipes.map((recipe) => {
+                    let isActive = (selectedRecipe === recipe.id);
+                    return <RecipeRow key={recipe.name} data={recipe} isActive={isActive} setSelectedRecipe={setSelectedRecipe}/>;
+                })}
+                    
             </tbody>
             </table>
         );

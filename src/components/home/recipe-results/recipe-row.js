@@ -2,13 +2,14 @@ import React from "react";
 
 const RecipeRow = (props) => {
 
+    let classes = `${props.isActive ? "active-row" : ""}`;
+
     const handleClick = () => {
-        // console.log(props.data.id);
         props.setSelectedRecipe(props.data.id);
     }
 
     return (
-        <tr onClick={handleClick}>
+        <tr className={classes} onClick={handleClick}>
         <td>
             {props.data.name}
         </td>
