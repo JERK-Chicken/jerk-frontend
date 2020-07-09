@@ -5,9 +5,9 @@ function UserInfo() {
     const info = jwt.decode(sessionStorage.getItem("json-token"));
 
   return (
-        <div>
-            {info.username}
-            {info.role}
+        <div>    
+            Roles
+            <ul>{info.roles.map((r)=>{return <li>{r.role}</li>})}</ul>
         </div>
     )
 }

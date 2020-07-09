@@ -47,7 +47,7 @@ const Basket = (props) => {
             <div className="card">
             <div className="card-header"><h3>Your Basket</h3></div>
             <div className="card-body">
-                <div  class ="limit">
+            <div  className ="limit">
             <table className="table table-hover" >
                 <tbody>{tableBody()}</tbody> 
             </table>
