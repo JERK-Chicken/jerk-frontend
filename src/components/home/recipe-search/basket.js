@@ -5,7 +5,7 @@ import UserRadio from "./user-limit-radio";
 import NonUserRadio from "./disabled-radio";
 
 const Basket = (props) => {
-    const [containingSearch, setContainingSearch] = useState(false);
+    const [containingSearch, setContainingSearch] = useState(true);
     const [limitedToSearch, setLimitedToSearch] = useState(false);
 
     function tableBody() {
