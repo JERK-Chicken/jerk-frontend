@@ -5,17 +5,20 @@ import axios from "axios";
 
 const RecipeBook = () => {
   const [recipes, setRecipes] = React.useState([]);
-  const token = sessionStorage.getItem("json-token");
+  
   React.useEffect(() => {
+    const config = {headers: {
+      'x-access-token': sessionStorage.getItem("json-token")
+    }};
     axios
-      .get("http://3.136.11.92:8083/users/recipebook", {headers :{'x-access-token':`${token}`}})
+      .get("http://3.136.11.92:8083/users/recipebook", config)
       .then((response) => {
         setRecipes(response.data);
       })
       .catch((err) => {
         console.error(err);
       });
-  },[token]);
+  },[]);
 
 
   return (

@@ -11,7 +11,7 @@ const RecipePage = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    (async _ => requestSaveRecipe({"id" : props.currentRecipe}))();
+    (async _ => requestSaveRecipe(props.currentRecipe))();
     // console.log(props.currentRecipe);
     // const config = {headers: {
     //   'x-access-token': sessionStorage.getItem("token")
