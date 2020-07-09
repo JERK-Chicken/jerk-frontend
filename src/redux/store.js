@@ -5,12 +5,14 @@ import userRolesLoaderReducer from './reducers/user-roles-loader';
 import usernameUpdaterReducer from './reducers/username-loader';
 import categoriesLoaderReducer from './reducers/categories-loader';
 import loggerReducer from './reducers/logger';
+import unitsLoaderReducer from './reducers/units-loader';
 
 const allReducers = combineReducers({
     userRoles : userRolesLoaderReducer,
     username : usernameUpdaterReducer,
     isLoggedIn : loggerReducer,
     categories : categoriesLoaderReducer,
+    units : unitsLoaderReducer,
 })
 
 export const store = createStore(

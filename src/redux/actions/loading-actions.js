@@ -20,3 +20,10 @@ export const loadCategories = (categories) => {
         categories
     };
 }
+
+export const loadUnits = (units) => {
+    return {
+        type: types.LOAD_UNITS,
+        units
+    };
+}

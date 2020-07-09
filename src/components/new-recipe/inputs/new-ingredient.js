@@ -1,6 +1,65 @@
-import React from "react"
+import React, {useState, useEffect} from "react"
+import { connect } from "react-redux";
+import {loadCategories, loadUnits} from "../../../redux/actions/loading-actions";
+import {requestIngredients, requestCategories, requestUnits, requestDescriptions} from "../../../helpers/requests/ingredient-requests";
 
 const IngredientList = (props) => {
+  const [ingredients, setIngredients] = useState([]);
+  const [descriptions, setDescriptions] = useState([]);
+
+  useEffect(() => {
+    (async _ => requestIngredients(setIngredients))();
+    (async _ => requestDescriptions(setDescriptions))();
+  }, []);
+
+  const handleCategoryClick = () => {
+    if (props.categories && props.categories.length > 0) {
+        return;
+    }
+    (async _ => requestCategories(props.loadCategories))();
+  }
+
+  const handleCategoryChange = (e) => {
+    const category = e.target.value === "" ? "" : e.target.value;
+    (async _ => requestIngredients(setIngredients, category))();
+  };
+
+  const handleIngredientChange = (e) => {
+    // const ingredient = e.target.value === "" ? "" : e.target.value;
+    // (async _ => requestDescriptions(setDescriptions, ingredient))();
+  };
+
+  const handleUnitClick = () => {
+    if (props.units && props.units.length > 0) {
+        return;
+    }
+    (async _ => requestUnits(props.loadUnits))();
+  }
+
+  const categoryDropList = () => {
+    return props.categories.map((obj) => 
+        <option key={obj.id} value={obj.category}>{obj.category}</option>
+    )
+  }
+
+  const unitDropList = () => {
+    return props.units.map((obj) => 
+        <option key={obj.id} value={obj.longType}>{obj.longType}</option>
+    )
+  }
+
+  const ingredientDropList = () => {
+    return ingredients.map((obj) => 
+        <option key={`ingredient_drop_${obj.id}`} value={obj.name}>{obj.name}</option>
+    )
+  }
+
+  const descriptionDropList = () => {
+    return descriptions.map((obj) => 
+        <option key={`description_drop_${obj.id}`} value={obj.description}>{obj.description}</option>
+    )
+  }
+
   return (
     props.ingredientList.map((val, idx) => {
       let quantity = `quantity-${idx}`, unit = `unit-${idx}`, category = `category-${idx}`, ingredient = `ingredient-${idx}`, description = `description-${idx}`
@@ -10,47 +69,28 @@ const IngredientList = (props) => {
             <input type="number"  name="quantity" data-id={idx} id={quantity} className="form-control col-sm-5" placeholder="Quantity"/>
           </td>
           <td>
-          <select name="unit" id={unit} data-id={idx} className="form-control">
+          <select name="unit" id={unit} data-id={idx} className="form-control" onClick={handleUnitClick}>
               <option value="">-Unit-</option>
-              <option value="teaspoon">Tsp.</option>
-              <option value="tablespoon">Tbsp.</option>
-              <option value="fluid-ounce">Fl. Oz</option>
-              <option value="cup">Cup</option>
-              <option value="pint">Pint</option>
-              <option value="gallon">Gallon</option>
-              <option value="ounce">Ounce</option>
-              <option value="gram">Gram</option>
-              <option value="pound">Pound</option>
+              {unitDropList()}
             </select>
           </td>
           <td>
-          <select name="category" id={category} data-id={idx} className="form-control">
+          <select 
+            name="category" id={category} data-id={idx} className="form-control" onClick={handleCategoryClick} onChange={handleCategoryChange}>
               <option value="">-Category-</option>
-              <option value="drinks">Drinks</option>
-              <option value="carbs">Carbs</option>
-              <option value="fruits">Fruits/Vegetables</option>
-              <option value="dairy">Dairy</option>
-              <option value="protein">Meat, Fish or Eggs</option>
-              <option value="fats">Fats</option>
-              <option value="sugar">High-Sugar Foods</option>
+              {categoryDropList()}
             </select>
           </td>
           <td>
-            <select name="ingredient" id={ingredient} data-id={idx} className="form-control">
+            <select name="ingredient" id={ingredient} data-id={idx} className="form-control" onChange={handleIngredientChange}>
               <option value="">-Ingredient-</option>
-              <option value="Chicken">Chicken</option>
-              <option value="Milk">Milk</option>
-              <option value="Beef">Beef</option>
-              <option value="Bread">Bread</option>
+              {ingredientDropList()}
             </select>
           </td>
           <td>
           <select name="description" id={description} data-id={idx} className="form-control">
               <option value="">-Description-</option>
-              <option value="Soup">Soup</option>
-              <option value="Diced">Diced</option>
-              <option value="Fried">Fried</option>
-              <option value="Shredded">Shredded</option>
+              {descriptionDropList()}
             </select>
           </td>
           <td>
@@ -65,4 +105,18 @@ const IngredientList = (props) => {
   )
 }
 
-export default IngredientList;
+function mapStateToProps(store) {
+  return {
+      categories : store.categories,
+      units : store.units,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+      loadCategories: (payload) => dispatch(loadCategories(payload)),
+      loadUnits: (payload) => dispatch(loadUnits(payload)),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(IngredientList);

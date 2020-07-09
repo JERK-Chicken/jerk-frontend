@@ -16,6 +16,21 @@ export async function requestIngredients(setIngredients, category) {
       }
 }
 
+export async function requestDescriptions(setDescription, ingredient) {
+  try {
+    let response;
+    if (ingredient) {
+        response = await axios.get("/descriptions", {'params': {'ingredient': ingredient}});
+    } else {
+        response = await axios.get("/descriptions");
+    }
+    setDescription(response.data);
+  } 
+  catch (error) {
+    console.error(error);
+  }
+}
+
 export async function requestCategories(setCategories) {
     try {
         const response = await axios.get("/categories");
@@ -25,3 +40,14 @@ export async function requestCategories(setCategories) {
         console.error(error);
       }
 }
+
+export async function requestUnits(setUnits) {
+  try {
+    const response = await axios.get("/units");
+    setUnits(response.data);
+  } 
+  catch (error) {
+    console.error(error);
+  }
+}
+
