@@ -18,6 +18,7 @@ const RecipeResults = (props) => {
             return "No results to show"
         } 
         return (
+            
             <table className="table table-hover">
             <tbody>
                 {props.recipes.map((recipe) => {
@@ -31,6 +32,7 @@ const RecipeResults = (props) => {
     }
 
     return (
+        <div class="row1">
         <div style={{ marginTop: 20 }}>
         <div className="card">
             <div className="card-header"><h3>Recipe Results</h3></div>
@@ -42,6 +44,7 @@ const RecipeResults = (props) => {
                 <div className="btn btn-primary" onClick={handleSubmit}>Select Recipes</div>
             </div>
             </div>
+        </div>
         </div>
         </div>
     );

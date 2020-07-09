@@ -47,9 +47,11 @@ const Basket = (props) => {
             <div className="card">
             <div className="card-header"><h3>Your Basket</h3></div>
             <div className="card-body">
-            <table className="table table-hover">
+                <div  class ="limit">
+            <table className="table table-hover" >
                 <tbody>{tableBody()}</tbody> 
             </table>
+            </div>
             </div>
             <div className="card-footer">
             <div className="row justify-content-between">

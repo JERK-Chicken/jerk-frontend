@@ -40,3 +40,16 @@ body {
 /* .active-row:hover {
   background-color: rgb(151, 121, 0);
 } */
+
+div.row1 {
+  height: 250px;
+}
+
+div.row2 {
+  height: 200px;
+}
+div.limit {
+  height: 200px;
+  max-height: 200px;
+  overflow: scroll;
+}
