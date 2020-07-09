@@ -1,13 +1,15 @@
 import React, {useState, useEffect} from "react";
 import {requestIngredients, requestCategories} from "../../../helpers/requests/ingredient-requests";
-import { connect } from "react-redux";
-import {loadCategories} from "../../../redux/actions/loading-actions"
+// import { connect } from "react-redux";
+// import {loadCategories} from "../../../redux/actions/loading-actions"
 
 const AddToBasketForm = (props) => {
+    const [categories, setCategories] = useState([]);
     const [selectedIngredient, setSelectedIngredient] = useState({id : "", name : ""});
     const [ingredients, setIngredients] = useState([]);
 
     useEffect(() => {
+        (async _ => requestCategories(setCategories))();
         (async _ => requestIngredients(setIngredients))();
     }, []);
 
@@ -42,7 +44,10 @@ const AddToBasketForm = (props) => {
     }
 
     const categoryDropList = () => {
-        return props.categories.map((obj) => 
+        // return props.categories.map((obj) => 
+        //     <option key={obj.id} value={obj.category}>{obj.category}</option>
+        // )
+        return categories.map((obj) => 
             <option key={obj.id} value={obj.category}>{obj.category}</option>
         )
     }
@@ -83,17 +88,19 @@ const AddToBasketForm = (props) => {
     );
 };
 
-function mapStateToProps(store) {
-    return {
-        categories : store.categories,
-    };
-}
+// function mapStateToProps(store) {
+//     return {
+//         categories : store.categories,
+//     };
+// }
 
-function mapDispatchToProps(dispatch) {
-    return {
-        loadCategories: (payload) =>
-            dispatch(loadCategories(payload)),
-    };
-}
+// function mapDispatchToProps(dispatch) {
+//     return {
+//         loadCategories: (payload) =>
+//             dispatch(loadCategories(payload)),
+//     };
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddToBasketForm);
+// export default connect(mapStateToProps, mapDispatchToProps)(AddToBasketForm);
+
+export default AddToBasketForm;
