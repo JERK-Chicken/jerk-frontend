@@ -1,8 +1,17 @@
 import React, {useState} from "react";
+import { connect } from "react-redux";
+import {withRouter} from "react-router-dom";
 import RecipeRow from "./recipe-row";
+import {setCurrentRecipe} from '../../../redux/actions/storing-actions';
 
 const RecipeResults = (props) => {
     const [selectedRecipe, setSelectedRecipe] = useState("");
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        props.setRecipePage(selectedRecipe);
+        props.history.push("/recipe-page")
+    }
 
     function searchResults() {
         if (!props.recipes || props.recipes.length === 0) {
@@ -28,7 +37,7 @@ const RecipeResults = (props) => {
                 </div>
             <div className="card-footer">
                 <div className="row justify-content-end">
-                <a className="btn btn-primary" href="/recipe-page" role="button">Select Recipes</a>
+                <div className="btn btn-primary" onClick={handleSubmit}>Select Recipes</div>
             </div>
             </div>
         </div>
@@ -36,4 +45,10 @@ const RecipeResults = (props) => {
     );
 };
 
-export default RecipeResults;
+function mapDispatchToProps(dispatch) {
+    return {
+        setRecipePage: (payload) => dispatch(setCurrentRecipe(payload))
+    };
+  }
+  
+export default connect(null, mapDispatchToProps)(withRouter(RecipeResults));
