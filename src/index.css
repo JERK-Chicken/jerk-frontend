@@ -17,13 +17,13 @@ body {
   box-shadow: -4px 4px black;
 }
 ::-webkit-scrollbar-thumb {
-  background: transparent; 
+  background: gray; 
 }
 ::-webkit-scrollbar-track {
   background: transparent; 
 }
 ::-webkit-scrollbar {
-  width: 0px;
+  width: 5px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #555; 
