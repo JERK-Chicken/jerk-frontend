@@ -57,7 +57,7 @@ const Basket = (props) => {
             <div className="row justify-content-between">
                 <div className="form-check-inline">
                     <label className="form-check-label">
-                    <input type="radio" className="form-check-input" name="optradio" onChange={setContainingMode}/>
+                    <input type="radio" className="form-check-input" name="optradio" checked="checked" onChange={setContainingMode}/>
                     Contains these Ingredients            
                     </label>
                 </div>
