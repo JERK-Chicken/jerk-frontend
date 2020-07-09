@@ -1,39 +1,46 @@
-import React, { useState } from "react";
+import React from "react";
 import GetRecipe from "./save-recipe-component";
-import axios from "axios";
+// import axios from "axios";
 import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { requestSaveRecipe } from "../../helpers/requests/recipe-requests";
 
 
 const RecipePage = (props) => {
-  const [recipe, setRecipe] = useState({});
-  const token = sessionStorage.getItem("json-token");
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post("http://3.136.11.92:8083/users/recipebook",recipe, {headers :{'x-access-token':`${token}`}})
-      .then(() => {
-        console.log(`success! posted: ${recipe}`);
-        props.history.push("/user");
-      })
-      .catch(() => {
-        console.error(`uh oh, failed request`);
-      });
-  };
 
-  const handleChange = (e) => {
-    const inputValue = e.target.value;
-    const inputField = e.target.name;
-    setRecipe({ ...recipe, [inputField]: inputValue });
+    (async _ => requestSaveRecipe({"id" : props.currentRecipe}))();
+    // console.log(props.currentRecipe);
+    // const config = {headers: {
+    //   'x-access-token': sessionStorage.getItem("token")
+    // }}
+
+    // axios
+    //   .post("/users/recipebook", props.currentRecipe, config)
+    //   .then(() => {
+    //     console.log(`success! posted: ${props.currentRecipe}`);
+    //     props.history.push("/user");
+    //   })
+    //   .catch(() => {
+    //     console.error(`uh oh, failed request`);
+    //   });
   };
 
   return (
     <div>
       <GetRecipe
         onSubmit={handleSubmit}
-        onChange={handleChange}
       ></GetRecipe>
       </div>
   );
 };
 
-export default withRouter(RecipePage);
+function mapStateToProps(store) {
+  return {
+    currentRecipe : store.currentRecipe,
+  };
+}
+
+export default connect(mapStateToProps)(withRouter(RecipePage));

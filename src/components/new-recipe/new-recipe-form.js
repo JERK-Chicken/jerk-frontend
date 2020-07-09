@@ -4,6 +4,7 @@ import PrepTimeInput from "./inputs/prep-time-input";
 import CookTimeInput from "./inputs/cook-time-input";
 import IngredientsInput from "./inputs/ingredients-input";
 import InstructionsInput from "./inputs/instructions-input";
+import { requestAddNewRecipe } from "../../helpers/requests/recipe-requests";
 
 // import axios from 'axios';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
@@ -65,10 +66,25 @@ const NewRecipe = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(buildRecipe());
+        if (!validated()) {
+            return;
+        }
 
-        if (name==='' || prepTime==='' || cookTime==='')
-        {
+        const newRecipeObject = buildRecipe();
+        (async _ => requestAddNewRecipe(newRecipeObject))();
+        // axios.post("/users/newrecipe", buildRecipe())
+        //     .then(res => {
+        //         // if(res.data.success) NotificationManager.success(res.data.msg);
+        //         console.log("Added the recipe!");
+        //     })
+        //     .catch(error => {
+        //         console.error(error);
+        //     }
+        // );
+    }
+    
+    function validated() {
+        if (name==='' || prepTime==='' || cookTime==='') {
             NotificationManager.warning("Please input required top-level fields");
             return false;
         }
@@ -80,38 +96,27 @@ const NewRecipe = (props) => {
 
         for (var i=0; i<ingredientList.length; i++)
         {
-                if(ingredientList[i].quantity==='' || 
-                    ingredientList[i].unit==='' || 
-                    (ingredientList[i].ingredient==='' && ingredientList[i].description==='')
-                ) {
-                    NotificationManager.warning(
-                        `Please include a quantity, unit, and either ingredient name or description for each ingredient row`
-                    );
-                    return false;
-                }
+            if(ingredientList[i].quantity==='' || 
+                ingredientList[i].unit==='' || 
+                (ingredientList[i].ingredient==='' && ingredientList[i].description==='')
+            ) {
+                NotificationManager.warning(
+                    `Please include a quantity, unit, and either ingredient name or description for each ingredient row`
+                );
+                return false;
+            }
         }
 
-        for (var j=0; j<instructionList.length; j++)
-        {
-                if(instructionList[j].instruction === '')
-                {
-                    NotificationManager.warning("Instruction fields may nto be empty");
-                    return false;
-                }
+        for (var j=0; j<instructionList.length; j++) {
+            if(instructionList[j].instruction === '') {
+                NotificationManager.warning("Instruction fields may nto be empty");
+                return false;
+            }
         }
 
-        // let data = { formData: this.state, userData: sessionStorage.getItem('user') }
-        // axios.defaults.headers.common["Authorization"] = sessionStorage.getItem('token');
-        // axios.post("http://3.136.11.92:8083/users/newrecipe", data).then(res => {
-        //     if(res.data.success) NotificationManager.success(res.data.msg);
-        // }).catch(error => {
-        //     if(error.response.status && error.response.status===400)
-        //     NotificationManager.error("Bad Request");
-        //     else NotificationManager.error("Something Went Wrong");
-        //     this.setState({ errors: error })
-        // });
+        return true;
     }
-    
+
     const buildRecipe = () => {
         const steps = instructionList.map((val, idx) => {
             return {position : idx+1, instruction : val.instruction}
