@@ -6,6 +6,7 @@ import usernameUpdaterReducer from './reducers/username-loader';
 import categoriesLoaderReducer from './reducers/categories-loader';
 import loggerReducer from './reducers/logger';
 import unitsLoaderReducer from './reducers/units-loader';
+import currentRecipeSetterReducer from './reducers/current-recipe-setter';
 
 const allReducers = combineReducers({
     userRoles : userRolesLoaderReducer,
@@ -13,6 +14,7 @@ const allReducers = combineReducers({
     isLoggedIn : loggerReducer,
     categories : categoriesLoaderReducer,
     units : unitsLoaderReducer,
+    currentRecipe : currentRecipeSetterReducer,
 })
 
 export const store = createStore(
