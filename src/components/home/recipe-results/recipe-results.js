@@ -27,7 +27,6 @@ const RecipeResults = (props) => {
         );
     }
 
-    console.log(selectedRecipe);
     return (
         <div style={{ marginTop: 20 }}>
         <div className="card">

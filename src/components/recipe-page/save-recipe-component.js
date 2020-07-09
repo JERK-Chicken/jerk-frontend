@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { connect } from "react-redux";
 
 async function getRecipe(setRecipe, id){
   const res = await axios.get(`/recipes/${id}`)
@@ -9,10 +10,9 @@ async function getRecipe(setRecipe, id){
 function GetRecipe(props) {
   const [currRecipe, setRecipe] = useState({});
   useEffect(()=>{
-    (async_ =>{getRecipe(setRecipe, 4)})();
-  }, []);
+    (async _ => {getRecipe(setRecipe, props.currentRecipe)})();
+  }, [props.currentRecipe]);
 
-  console.log(currRecipe);
   if(currRecipe.name) return (
     <div className="container">
           <div style={{ marginTop: 20 }}>
@@ -61,4 +61,10 @@ function GetRecipe(props) {
   else return <div></div>
 };
 
-export default GetRecipe;
+function mapStateToProps(store) {
+  return {
+    currentRecipe : store.currentRecipe,
+  };
+}
+
+export default connect(mapStateToProps)(GetRecipe);
