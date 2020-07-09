@@ -32,3 +32,11 @@ body {
 .active-row {
   background-color: rgb(251,202,3);
 }
+
+.table-hover tbody tr.active-row:hover td, .table-hover tbody tr.active-row:hover th {
+  background-color: rgb(180, 145, 2);
+}
+
+/* .active-row:hover {
+  background-color: rgb(151, 121, 0);
+} */
