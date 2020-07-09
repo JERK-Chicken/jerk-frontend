@@ -40,12 +40,20 @@ export async function requestSaveRecipe(data) {
       const config = {headers: {
         'x-access-token': sessionStorage.getItem("json-token")
       }};
-      // const config = {
-      //   'x-access-token': sessionStorage.getItem("token")
-      // }
-      const response = await axios.get(`/users/recipebook/${data}`, config)
-      console.log(response);
-      // setRecipes(response.data);
+      await axios.get(`/users/recipebook/${data}`, config)
+    } 
+    catch (error) {
+      console.error(error);
+    }
+}
+
+export async function requestRecipebook(setRecipes) {
+  try {
+      const config = {headers: {
+        'x-access-token': sessionStorage.getItem("json-token")
+      }};
+      const response = await axios.get("http://3.136.11.92:8083/users/recipebook", config);
+      setRecipes(response.data);
     } 
     catch (error) {
       console.error(error);
