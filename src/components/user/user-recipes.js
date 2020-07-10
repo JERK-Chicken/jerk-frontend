@@ -3,7 +3,7 @@ import GeneralTable from "../general/general-table"
 import axios from "axios";
 
 
-const UserRecipe = () => {
+const UserRecipe = (props) => {
   const [recipes, setRecipes] = React.useState([]);
   const token = sessionStorage.getItem("json-token");
   React.useEffect(() => {
@@ -20,7 +20,7 @@ const UserRecipe = () => {
 
   return (
   <div>
-  <GeneralTable records={recipes}></GeneralTable>
+  <GeneralTable records={recipes} selectedId={props.selectedId} setSelectedId={props.setSelectedId}/>
   </div>
   );  
 };
