@@ -71,16 +71,8 @@ const NewRecipe = (props) => {
         }
 
         const newRecipeObject = buildRecipe();
+        // console.log(newRecipeObject);
         (async _ => requestAddNewRecipe(newRecipeObject))();
-        // axios.post("/users/newrecipe", buildRecipe())
-        //     .then(res => {
-        //         // if(res.data.success) NotificationManager.success(res.data.msg);
-        //         console.log("Added the recipe!");
-        //     })
-        //     .catch(error => {
-        //         console.error(error);
-        //     }
-        // );
     }
     
     function validated() {
@@ -119,23 +111,23 @@ const NewRecipe = (props) => {
 
     const buildRecipe = () => {
         const steps = instructionList.map((val, idx) => {
-            return {position : idx+1, instruction : val.instruction}
+            return {"position" : idx+1, "instruction" : val.instruction}
         });
         const ingredients = ingredientList.map((ingr) => {
             return {
-                qty : ingr.quantity, 
-                unit : ingr.unit,
-                ingredient_id : ingr.ingredient,
-                ingredientDescription : ingr.description,
-                category : ingr.category.split("_")[1],
+                "qty" : ingr.quantity, 
+                "unit" : {"id" : ingr.unit},
+                "ingredient_id" : ingr.ingredient,
+                "ingredientDescription" : ingr.description ? ingr.description : null,
+                "category" : {"id" : ingr.category.split("_")[1]},
             }
         });
         return {
-            name : name,
-            prepTime : prepTime,
-            cookTime : cookTime,
-            steps : steps,
-            ingredients : ingredients
+            "name" : name,
+            "prepTime" : prepTime,
+            "cookTime" : cookTime,
+            "steps" : steps,
+            "ingredients" : ingredients
         };
     }
 

@@ -24,11 +24,9 @@ export async function requestAddNewRecipe(data) {
   try {
       console.log(data);
       const config = {headers: {
-        'x-access-token': sessionStorage.getItem("token")
+        'x-access-token': sessionStorage.getItem("json-token")
       }};
-      const response = await axios.post("/recipes", data, config);
-      console.log(response);
-      // setRecipes(response.data);
+      await axios.post("/recipes", data, config);
     } 
     catch (error) {
       console.error(error);
