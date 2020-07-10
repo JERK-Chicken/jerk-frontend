@@ -10,7 +10,10 @@ async function getRecipe(setRecipe, id){
 function GetRecipe(props) {
   const [currRecipe, setRecipe] = useState({});
   useEffect(()=>{
-    (async _ => {getRecipe(setRecipe, props.currentRecipe)})();
+    // (async _ => {getRecipe(setRecipe, props.currentRecipe)})();
+    console.log(sessionStorage.getItem('selected-recipe'));
+    console.log(sessionStorage);
+    (async _ => {getRecipe(setRecipe, sessionStorage.getItem('selected-recipe'))})();
   }, [props.currentRecipe]);
 
   if(currRecipe.name) return (

@@ -50,7 +50,7 @@ export async function requestRecipebook(setRecipes) {
       const config = {headers: {
         'x-access-token': sessionStorage.getItem("json-token")
       }};
-      const response = await axios.get("http://3.136.11.92:8083/users/recipebook", config);
+      const response = await axios.get("/users/recipebook", config);
       setRecipes(response.data);
     } 
     catch (error) {

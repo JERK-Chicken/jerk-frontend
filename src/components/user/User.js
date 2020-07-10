@@ -1,16 +1,21 @@
 import React, {useState} from 'react';
+import { withRouter } from "react-router-dom";
 import RecipeBook from './recipe-book';
 import UserRecipe from './user-recipes';
 import UserInfo from "./user-info";
 import jwt from "jsonwebtoken";
 
-function UserApp() {
+function UserApp(props) {
     const info = jwt.decode(sessionStorage.getItem("json-token"));
     const [selectedBookRecipe, setSelectedBookRecipe] = useState("");
     const [selectedWrittenRecipe, setSelectedWrittenRecipe] = useState("");
 
-    console.log(selectedBookRecipe, selectedWrittenRecipe);
+    const handleBookRecipesClick = (e) => {
+        (async _ => sessionStorage.setItem('selected-recipe', selectedBookRecipe))();
+        props.history.push("/recipe-page");
+    }
 
+    // console.log(selectedBookRecipe, selectedWrittenRecipe);
     return (
     <div className="container-fluid">
         <div className="col1">
@@ -42,24 +47,26 @@ function UserApp() {
         <div className="row" style={{ marginTop: 20 }}>
             <div className="col-7">
     
-                <div className="card">
-                <div className="card-header"><h3>Saved Recipes</h3></div>
-                <div className="card-body">
+            <div className="card">
+            <div className="card-header"><h3>Favorited Recipes</h3></div>
+            <div className="card-body">
                 <div  className ="limit">
                 <RecipeBook selectedId={selectedBookRecipe} setSelectedId={setSelectedBookRecipe}/>
                 </div>
-                </div>
-                <div className="card-footer">
-                <div className="row justify-content-end">
-                <a className="btn btn-primary" href="/recipe-page" role="button">Select Recipes</a>
             </div>
+            <div className="card-footer">
+                <div className="row justify-content-end">
+                <div className="btn btn-primary" role="button" onClick={handleBookRecipesClick}>
+                    Select Recipes
+                </div>
+                </div>
             </div>
                 
-                </div>
+            </div>
             </div>
         </div>
     </div>
     )
 }
 
-export default UserApp;
+export default withRouter(UserApp);
