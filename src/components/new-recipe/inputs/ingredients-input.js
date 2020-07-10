@@ -19,8 +19,8 @@ const IngredientsInput = (props) => {
                 <button 
                     onClick={props.addNewIngredientRow} 
                     type="button" 
-                    className="btn btn-primary text-center"
-                ><i className="fa fa-plus-circle" aria-hidden="true"></i>
+                    className="btn btn-success text-center"
+                ><i className="fa fa-plus-circle" aria-hidden="true"></i>+
                 </button>
             </td></tr>
         </tfoot>

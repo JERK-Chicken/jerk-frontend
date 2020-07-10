@@ -21,8 +21,8 @@ const InstructionsInput = (props) => {
                     <button 
                         onClick={props.addNewInstructionRow} 
                         type="button" 
-                        className="btn btn-primary text-center"
-                    ><i className="fa fa-plus-circle" aria-hidden="true"></i>
+                        className="btn btn-success text-center"
+                    ><i className="fa fa-plus-circle" aria-hidden="true"></i>+
                     </button>
                 </td></tr>
             </tfoot>
