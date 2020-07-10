@@ -44,6 +44,10 @@ describe("Testing App", () => {
       expect(wrapper.find("Route[path='/dev-ingredient']").length).toBe(1);
     });
 
+    test("check '/edit-recipe' route", () => {
+      expect(wrapper.find("Route[path='/edit-recipe']").length).toBe(1);
+    });
+
     test("check '/user' corresponding to UserRecipe", () => {
       expect(
         wrapper.find("Route[path='/user']").contains("UserRecipe")
@@ -67,5 +71,82 @@ describe("Testing App", () => {
         wrapper.find("Route[path='/']").contains("Basket")
       );
     });
-  
+
+    test("check '/' corresponding to AddToBasketForm", () => {
+      expect(
+        wrapper.find("Route[path='/']").contains("AddToBasketForm")
+      );
+    });
+
+    test("check '/' corresponding to RecipeRow", () => {
+      expect(
+        wrapper.find("Route[path='/']").contains("RecipeRow")
+      );
+    });
+    
+    test("check '/' corresponding to NonUserRadio", () => {
+      expect(
+        wrapper.find("Route[path='/']").contains("NonUserRadio")
+      );
+    });
+
+    test("check '/' corresponding to UserRadio", () => {
+      expect(
+        wrapper.find("Route[path='/']").contains("UserRadio")
+      );
+    });
+
+    test("check '/' corresponding to BasketRow", () => {
+      expect(
+        wrapper.find("Route[path='/']").contains("BasketRow")
+      );
+    }); 
+    
+    test("check '/' corresponding to UserButton", () => {
+      expect(
+        wrapper.find("Route[path='/']").contains("UserButton")
+      );
+    }); 
+    
+    test("check '/' corresponding to LogoutButton", () => {
+      expect(
+        wrapper.find("Route[path='/']").contains("LogoutButton")
+      );
+    }); 
+    
+    test("check '/' corresponding to LoginButton", () => {
+      expect(
+        wrapper.find("Route[path='/']").contains("LoginButton")
+      );
+    });
+    
+    test("check '/' corresponding to RegisterForm", () => {
+      expect(
+        wrapper.find("Route[path='/recipe-book']").contains("RegisterForm")
+      );
+    });
+    
+    test("check '/' corresponding to CloseModalButton", () => {
+      expect(
+        wrapper.find("Route[path='/recipe-book']").contains("CloseModalButton")
+      );
+    }); 
+    
+    test("check '/' corresponding to RegisterModal", () => {
+      expect(
+        wrapper.find("Route[path='/recipe-book']").contains("RegisterModal")
+      );
+    }); 
+        
+    test("check '/' corresponding to LoginForm", () => {
+      expect(
+        wrapper.find("Route[path='/recipe-book']").contains("LoginForm")
+      );
+    }); 
+        
+    test("check '/' corresponding to Modal", () => {
+      expect(
+        wrapper.find("Route[path='/recipe-book']").contains("Modal")
+      );
+    }); 
 });
