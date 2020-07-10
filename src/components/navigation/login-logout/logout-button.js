@@ -11,11 +11,10 @@ const LogoutButton = (props) => {
     }
 
     return(
-        <div className = 'Logout'>
-                <button className="btn text-white" onClick={submitLogout}>
-                    Logout
-                </button>
-            
+        <div>
+            <button className="btn text-white" onClick={submitLogout}>
+                Logout
+            </button>            
         </div>
     )
 };
