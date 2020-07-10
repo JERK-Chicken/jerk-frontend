@@ -8,16 +8,13 @@ import BasketRow from "./basket-row";
 const Basket = (props) => {
     const [containingSearch, setContainingSearch] = useState(true);
     const [limitedToSearch, setLimitedToSearch] = useState(false);
-    // const [selectedIngredient, setSelectedIngredient] = useState(false);
 
     function tableBody() {
         return props.basket.map((ingredient) => 
-            // <BasketRow key={ingredient.name} ingredient={ingredient} setSelectedIngredient={setSelectedIngredient}/>
             <BasketRow key={ingredient.name} ingredient={ingredient} setBasket={props.setBasket} basket={props.basket}/>
         );
     }
 
-    // console.log(selectedIngredient);
     const handleSubmit = (e) => {
         e.preventDefault();
         const ingredientIds = props.basket.map((val) => val.id);

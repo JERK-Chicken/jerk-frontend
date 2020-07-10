@@ -6,7 +6,6 @@ const BasketRow = (props) => {
         props.setBasket(
             props.basket.filter((obj) => obj.id !== props.ingredient.id)
         );
-        // props.setSelectedIngredient(props.ingredient.id);
     }
 
     return (
