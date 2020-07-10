@@ -16,6 +16,7 @@ body {
   border-radius: 5px;
   box-shadow: -4px 4px black;
 }
+
 ::-webkit-scrollbar-thumb {
   background: gray; 
   border-radius: 5px;
@@ -32,11 +33,11 @@ body {
 }
 
 .active-row {
-  background-color: rgb(251,202,3);
+  background-color: rgb(236,236,236);
 }
 
 .table-hover tbody tr.active-row:hover td, .table-hover tbody tr.active-row:hover th {
-  background-color: rgb(180, 145, 2);
+  background-color: rgb(236,236,236);
 }
 
 /* .active-row:hover {
@@ -50,5 +51,11 @@ div.col1 {
 div.limit {
   height: 200px;
   max-height: 200px;
+  overflow: scroll;
+}
+
+div.recipe {
+  height: 500px;
+  max-height: 500px;
   overflow: scroll;
 }
