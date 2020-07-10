@@ -22,7 +22,6 @@ export async function requestRecipesLimitedTo(setRecipes, ingredientIds) {
 
 export async function requestAddNewRecipe(data) {
   try {
-      console.log(data);
       const config = {headers: {
         'x-access-token': sessionStorage.getItem("json-token")
       }};
@@ -39,8 +38,7 @@ export async function requestDeleteRecipe(recipeId) {
         'x-access-token': sessionStorage.getItem("json-token")
       }};
 
-      const response = await axios.delete(`/recipes/${recipeId}`, config);
-      console.log(response);
+      await axios.delete(`/recipes/${recipeId}`, config);
     } 
     catch (error) {
       console.error(error);

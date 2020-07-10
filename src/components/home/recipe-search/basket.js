@@ -3,17 +3,21 @@ import { connect } from "react-redux";
 import {requestRecipesContaining, requestRecipesLimitedTo} from "../../../helpers/requests/recipe-requests"
 import UserRadio from "./user-limit-radio";
 import NonUserRadio from "./disabled-radio";
+import BasketRow from "./basket-row";
 
 const Basket = (props) => {
     const [containingSearch, setContainingSearch] = useState(true);
     const [limitedToSearch, setLimitedToSearch] = useState(false);
+    // const [selectedIngredient, setSelectedIngredient] = useState(false);
 
     function tableBody() {
         return props.basket.map((ingredient) => 
-            <tr key={`basket-ingred-${ingredient.name}`}><td>{ingredient.name}</td></tr>
+            // <BasketRow key={ingredient.name} ingredient={ingredient} setSelectedIngredient={setSelectedIngredient}/>
+            <BasketRow key={ingredient.name} ingredient={ingredient} setBasket={props.setBasket} basket={props.basket}/>
         );
     }
 
+    // console.log(selectedIngredient);
     const handleSubmit = (e) => {
         e.preventDefault();
         const ingredientIds = props.basket.map((val) => val.id);
