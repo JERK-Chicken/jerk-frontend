@@ -1,13 +1,14 @@
 import React from "react";
-import TitleCase from "../general/title-case-component";
+import GeneralRow from "./general-row";
 
 const GeneralTable = (props) => {
+
   if (props.records && props.records.length > 0) {
     return (
       <div id = "table">
       <div className="table-wrapper-scroll-y my-custom-scrollbar table-responsive table-hover">
       <table className="table">
-        <thead>
+        {/* <thead>
           <tr>
             {Object.keys(props.records[0]).map((objectKey, index) => {
               return (
@@ -17,15 +18,12 @@ const GeneralTable = (props) => {
               );
             })}
           </tr>
-        </thead>
+        </thead> */}
         <tbody>
           {props.records.map((record) => {
+            let isActive = (props.selectedId === record.id);;
             return (
-              <tr key={record.id}>
-                {Object.keys(record).map((objectKey) => {
-                  return <td key={objectKey}>{record[objectKey]}</td>;
-                })}
-              </tr>
+              <GeneralRow key={record.id} record={record} isActive={isActive} setSelectedId={props.setSelectedId}/>
             );
           })}
         </tbody>

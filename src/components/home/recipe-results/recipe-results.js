@@ -34,7 +34,7 @@ const RecipeResults = (props) => {
         <div style={{ marginTop: 20 }}>
         <div className="card">
             <div className="card-header"><h3>Recipe Results</h3></div>
-            <div className="limit">
+            <div className="recipe">
                 <div className="card-body">
                     {searchResults()}
                 </div>

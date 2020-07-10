@@ -3,12 +3,12 @@ import GeneralTable from "../general/general-table"
 import axios from "axios";
 
 
-const UserRecipe = () => {
+const UserRecipe = (props) => {
   const [recipes, setRecipes] = React.useState([]);
   const token = sessionStorage.getItem("json-token");
   React.useEffect(() => {
     axios
-      .get("http://3.136.11.92:8083/users/recipes", {headers :{'x-access-token':`${token}`}})
+      .get("/users/recipes", {headers :{'x-access-token':`${token}`}})
       .then((response) => {
         setRecipes(response.data);
       })
@@ -20,7 +20,7 @@ const UserRecipe = () => {
 
   return (
   <div>
-  <GeneralTable records={recipes}></GeneralTable>
+  <GeneralTable records={recipes} selectedId={props.selectedId} setSelectedId={props.setSelectedId}/>
   </div>
   );  
 };

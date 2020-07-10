@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import RecipeBook from './recipe-book';
 import UserRecipe from './user-recipes';
 import UserInfo from "./user-info";
@@ -6,8 +6,12 @@ import jwt from "jsonwebtoken";
 
 function UserApp() {
     const info = jwt.decode(sessionStorage.getItem("json-token"));
+    const [selectedBookRecipe, setSelectedBookRecipe] = useState("");
+    const [selectedWrittenRecipe, setSelectedWrittenRecipe] = useState("");
 
-  return (
+    console.log(selectedBookRecipe, selectedWrittenRecipe);
+
+    return (
     <div className="container-fluid">
         <div className="col1">
         <div className="row justify-content-between" style={{ marginTop: 20 }}>
@@ -22,8 +26,8 @@ function UserApp() {
             <div className="card">
                 <div className="card-header"><h3>Your Recipes</h3></div>
                 <div className="card-body">
-                <div className ="limit">
-                <UserRecipe></UserRecipe>
+                <div className ="recipe">
+                <UserRecipe selectedId={selectedWrittenRecipe} setSelectedId={setSelectedWrittenRecipe}/>
                 </div>
                 </div>
                 <div className="row card-footer justify-content-between">
@@ -42,7 +46,7 @@ function UserApp() {
                 <div className="card-header"><h3>Saved Recipes</h3></div>
                 <div className="card-body">
                 <div  className ="limit">
-                <RecipeBook></RecipeBook>
+                <RecipeBook selectedId={selectedBookRecipe} setSelectedId={setSelectedBookRecipe}/>
                 </div>
                 </div>
                 <div className="card-footer">
