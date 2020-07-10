@@ -8,7 +8,7 @@ const UserRecipe = () => {
   const token = sessionStorage.getItem("json-token");
   React.useEffect(() => {
     axios
-      .get("http://3.136.11.92:8083/users/recipes", {headers :{'x-access-token':`${token}`}})
+      .get("/users/recipes", {headers :{'x-access-token':`${token}`}})
       .then((response) => {
         setRecipes(response.data);
       })

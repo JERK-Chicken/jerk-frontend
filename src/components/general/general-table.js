@@ -1,5 +1,5 @@
 import React from "react";
-import TitleCase from "../general/title-case-component";
+// import TitleCase from "../general/title-case-component";
 
 const GeneralTable = (props) => {
   if (props.records && props.records.length > 0) {
@@ -7,7 +7,7 @@ const GeneralTable = (props) => {
       <div id = "table">
       <div className="table-wrapper-scroll-y my-custom-scrollbar table-responsive table-hover">
       <table className="table">
-        <thead>
+        {/* <thead>
           <tr>
             {Object.keys(props.records[0]).map((objectKey, index) => {
               return (
@@ -17,7 +17,7 @@ const GeneralTable = (props) => {
               );
             })}
           </tr>
-        </thead>
+        </thead> */}
         <tbody>
           {props.records.map((record) => {
             return (
