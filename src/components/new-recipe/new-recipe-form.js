@@ -142,9 +142,9 @@ const NewRecipe = (props) => {
                             <div className="card-header text-center">Add a New Recipe</div>
                             <div className="card-body">
                                 <div className="row">
-                                    <div className="col-sm-4"><NameInput/></div>
-                                    <div className="col-sm-1"><PrepTimeInput/></div>
-                                    <div className="col-sm-1"><CookTimeInput/></div>
+                                    <div className="col-4"><NameInput/></div>
+                                    <div className="col-2"><PrepTimeInput/></div>
+                                    <div className="col-2"><CookTimeInput/></div>
                                 </div>                                
                                 <IngredientsInput
                                     addNewIngredientRow={addNewIngredientRow}

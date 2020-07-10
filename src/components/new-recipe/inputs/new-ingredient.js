@@ -53,41 +53,41 @@ const IngredientList = (props) => {
     props.ingredientList.map((val, idx) => {
       let quantity = `quantity-${idx}`, unit = `unit-${idx}`, category = `category-${idx}`, ingredient = `ingredient-${idx}`, description = `description-${idx}`
       return (
-        <tr key={val.index}>
-          <td>
-            <input type="number"  name="quantity" data-id={idx} id={quantity} className="form-control col-sm-5" placeholder="Quantity"/>
-          </td>
-          <td>
+        <div className="row justify-content-around" key={val.index}>
+          <div className="col-2">
+            <input type="number"  name="quantity" data-id={idx} id={quantity} className="form-control" placeholder="Quantity"/>
+          </div>
+          <div className="col-2">
           <select name="unit" id={unit} data-id={idx} className="form-control" /*onClick={handleUnitClick}*/>
               <option value="">-Unit-</option>
               {unitDropList()}
             </select>
-          </td>
-          <td>
+          </div>
+          <div className="col-2">
           <select 
             name="category" id={category} data-id={idx} className="form-control" /*onClick={handleCategoryClick}*/ onChange={handleCategoryChange}>
               <option value="">-Category-</option>
               {categoryDropList()}
             </select>
-          </td>
-          <td>
+          </div>
+          <div className="col-2">
             <select name="ingredient" id={ingredient} data-id={idx} className="form-control" onChange={handleIngredientChange}>
               <option value="">-Ingredient-</option>
               {ingredientDropList()}
             </select>
-          </td>
-          <td>
+          </div>
+          <div className="col-2">
           <select name="description" id={description} data-id={idx} className="form-control">
               <option value="">-Description-</option>
               {descriptionDropList()}
             </select>
-          </td>
-          <td>
+          </div>
+          <div>
             {
              <button className="btn btn-danger" onClick={(() => props.delete(val))} ><i className="fa fa-minus" aria-hidden="true"></i></button>
             }
-          </td>
-        </tr >
+          </div>
+        </div >
       )
     })
   )

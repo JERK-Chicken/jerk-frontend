@@ -33,7 +33,7 @@ body {
 }
 
 .active-row {
-  background-color: rgb(236,236,236);
+  background-color: rgb(236, 236, 236);
 }
 
 .table-hover tbody tr.active-row:hover td, .table-hover tbody tr.active-row:hover th {
@@ -65,5 +65,5 @@ div.results {
   overflow: scroll;
 }
 div.card {
-  opacity: 100%;
+  opacity: 95%;
 }

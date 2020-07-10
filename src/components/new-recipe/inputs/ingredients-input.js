@@ -5,9 +5,7 @@ const IngredientsInput = (props) => {
     return (
         <table className="table">
         <thead>
-            <tr>
-                <th className="required">Ingredients</th>                                                
-            </tr>
+            <th className="required">Ingredients</th>                                                
         </thead>
         <tbody>
             <IngredientList 
