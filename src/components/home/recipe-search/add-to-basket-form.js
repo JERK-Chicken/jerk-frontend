@@ -68,13 +68,16 @@ const AddToBasketForm = (props) => {
             <div className="card-header"><h3>Add to Your Basket</h3></div>
             <div className="card-body">
             <form className="row justify-content-around">
-                <div>
+                
+                <div className="col-3">
                     <select className="form-control" name="category" onClick={handleCategoryClick} onChange={handleCategoryChange}>
+                        
                         <option value="null">- Category -</option>
                         {categoryDropList()}
+                        
                     </select>
                 </div>
-                <div>
+                <div className="col-4">
                     <select className="form-control" name="ingredient" onChange={handleIngredientChange}>
                         <option value="null">- Ingredient -</option>
                         {ingredientDropList()}
