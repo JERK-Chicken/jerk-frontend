@@ -11,7 +11,7 @@ import UserButton from "../user/user-button";
 const Header = (props) => {
     let loggingButton = props.isLoggedIn ? 
         <div className="row justify-content-around">
-            <div className="col-6 red-button"><UserButton/></div><div className="col-5 red-button"><LogoutButton/></div>
+            <div> <UserButton/></div><div className="red-button"><LogoutButton/></div>
             </div> : 
             <LoginButton/>;
     return (
