@@ -22,7 +22,7 @@ function UserApp() {
             <div className="card">
                 <div className="card-header"><h3>Your Recipes</h3></div>
                 <div className="card-body">
-                <div className ="limit">
+                <div className ="recipe">
                 <UserRecipe></UserRecipe>
                 </div>
                 </div>
