@@ -1,26 +1,17 @@
 import React from "react";
 import GeneralTable from "../general/general-table"
-import axios from "axios";
+import { requestWrittenRecipe } from "../../helpers/requests/recipe-requests";
 
 
 const UserRecipe = (props) => {
-  const [recipes, setRecipes] = React.useState([]);
-  const token = sessionStorage.getItem("json-token");
   React.useEffect(() => {
-    axios
-      .get("/users/recipes", {headers :{'x-access-token':`${token}`}})
-      .then((response) => {
-        setRecipes(response.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  },[token]);
+    (async _ => requestWrittenRecipe(props.setRecipes))();
+  },[]);
 
 
   return (
-  <div>
-  <GeneralTable records={recipes} selectedId={props.selectedId} setSelectedId={props.setSelectedId}/>
+  <div className ="recipe">
+    <GeneralTable records={props.recipes} selectedId={props.selectedId} setSelectedId={props.setSelectedId}/>
   </div>
   );  
 };

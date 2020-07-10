@@ -33,6 +33,20 @@ export async function requestAddNewRecipe(data) {
     }
 }
 
+export async function requestDeleteRecipe(recipeId) {
+  try {
+      const config = {headers: {
+        'x-access-token': sessionStorage.getItem("json-token")
+      }};
+
+      const response = await axios.delete(`/recipes/${recipeId}`, config);
+      console.log(response);
+    } 
+    catch (error) {
+      console.error(error);
+    }
+}
+
 export async function requestSaveRecipe(data) {
   try {
       const config = {headers: {
@@ -57,3 +71,17 @@ export async function requestRecipebook(setRecipes) {
       console.error(error);
     }
 }
+
+export async function requestWrittenRecipe(setRecipes) {
+  try {
+      const config = {headers: {
+        'x-access-token': sessionStorage.getItem("json-token")
+      }};
+      const response = await axios.get("/users/recipes", config);
+      setRecipes(response.data);
+    } 
+    catch (error) {
+      console.error(error);
+    }
+}
+
