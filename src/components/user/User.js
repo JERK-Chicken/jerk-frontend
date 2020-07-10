@@ -11,8 +11,11 @@ function UserApp(props) {
     const [selectedWrittenRecipe, setSelectedWrittenRecipe] = useState("");
 
     const handleBookRecipesClick = (e) => {
-        (async _ => sessionStorage.setItem('selected-recipe', selectedBookRecipe))();
-        props.history.push("/recipe-page");
+        if (selectedBookRecipe) {
+            sessionStorage.setItem('selected-recipe', selectedBookRecipe);
+            props.history.push("/recipe-page");
+        }
+        
     }
 
     // console.log(selectedBookRecipe, selectedWrittenRecipe);

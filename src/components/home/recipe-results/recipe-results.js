@@ -9,8 +9,8 @@ const RecipeResults = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        props.setRecipePage(selectedRecipe);
-        props.history.push("/recipe-page")
+        sessionStorage.setItem('selected-recipe', selectedRecipe);
+        props.history.push("/recipe-page");
     }
 
     function searchResults() {

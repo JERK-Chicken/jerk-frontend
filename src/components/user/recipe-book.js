@@ -9,7 +9,6 @@ const RecipeBook = (props) => {
     (async _ => requestRecipebook(setRecipes))();
   },[]);
 
-  console.log(recipes);
   return (
   <div>
     <GeneralTable records={recipes} selectedId={props.selectedId} setSelectedId={props.setSelectedId}/>

@@ -10,9 +10,6 @@ async function getRecipe(setRecipe, id){
 function GetRecipe(props) {
   const [currRecipe, setRecipe] = useState({});
   useEffect(()=>{
-    // (async _ => {getRecipe(setRecipe, props.currentRecipe)})();
-    console.log(sessionStorage.getItem('selected-recipe'));
-    console.log(sessionStorage);
     (async _ => {getRecipe(setRecipe, sessionStorage.getItem('selected-recipe'))})();
   }, [props.currentRecipe]);
 
@@ -37,7 +34,7 @@ function GetRecipe(props) {
                       <h5>Ingredients</h5>
                        <ul>
                         {currRecipe.ingredients.map((i)=>{
-                            return <li>{i.qty} {i.unit.longType} {i.name}</li>
+                            return <li key={i.ingredient_id}>{i.qty} {i.unit.longType} {i.name}</li>
                         })}
                         </ul>
                       </div>
@@ -45,7 +42,7 @@ function GetRecipe(props) {
                       <h5>Instructions</h5>
                         <ol>
                         {currRecipe.steps.map((s)=>{
-                          return <li>{s.instruction}</li>
+                          return <li key={s.step_id}>{s.instruction}</li>
                         })}
                         </ol>
                       </div>
