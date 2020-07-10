@@ -40,7 +40,6 @@ const AddToBasketForm = (props) => {
     }
 
     const handleSubmit = () => {
-        console.log(selectedIngredient);
         if(selectedIngredient.id){
             if(!props.basket.includes(selectedIngredient))
                 props.setBasket([...props.basket, selectedIngredient])

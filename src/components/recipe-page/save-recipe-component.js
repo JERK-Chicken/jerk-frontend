@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { requestRecipebook, requestSaveRecipe } from "../../helpers/requests/recipe-requests";
 
 async function getRecipe(setRecipe, id){
   const res = await axios.get(`/recipes/${id}`)
@@ -9,9 +11,35 @@ async function getRecipe(setRecipe, id){
 
 function GetRecipe(props) {
   const [currRecipe, setRecipe] = useState({});
+  const [savedRecipes, setSavedRecipes] = useState([]);
+  const [isSaved, setIsSaved] = useState(false);
+
   useEffect(()=>{
     (async _ => {getRecipe(setRecipe, sessionStorage.getItem('selected-recipe'))})();
-  }, [props.currentRecipe]);
+    (async _ => requestRecipebook(setSavedRecipes))();
+    const savedIds = savedRecipes.map((obj) => obj.id);
+    setIsSaved(
+      savedIds.includes(currRecipe.recipe_id)
+    )
+  }, [props.currentRecipe, currRecipe.recipe_id]);
+
+  function saveButton() {
+    if (isSaved) {
+      return (<button className="btn btn-success" disabled>
+        Save Recipe
+      </button>
+    )}
+    return (<button className="btn btn-success" onClick={handleSubmit}>
+      Save Recipe
+    </button>
+    )
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    (async _ => requestSaveRecipe(props.currentRecipe))();
+    setIsSaved(true);
+  };
 
   if(currRecipe.name) return (
     <div className="container">
@@ -49,10 +77,11 @@ function GetRecipe(props) {
                     </div>
                 </div>
                 <div className="row card-footer justify-content-between">
-                <button className="btn btn-success" onClick={props.onSubmit}>
+                {/* <button className="btn btn-success" onClick={props.onSubmit} >
                   Save Recipe
-                </button>
-                    <a className="btn btn-danger" href="/" role="button">Return to Basket</a>
+                </button> */}
+                {saveButton()}
+                <Link className="btn btn-danger" to="/" role="button">Return to Basket</Link>
                 </div>
             </div>
         </div>
