@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { withRouter } from "react-router-dom";
 import NameInput from "./inputs/name-input";
 import PrepTimeInput from "./inputs/prep-time-input";
 import CookTimeInput from "./inputs/cook-time-input";
@@ -73,6 +74,7 @@ const NewRecipe = (props) => {
         const newRecipeObject = buildRecipe();
         // console.log(newRecipeObject);
         (async _ => requestAddNewRecipe(newRecipeObject))();
+        props.history.push("/user");
     }
     
     function validated() {
@@ -172,4 +174,4 @@ const NewRecipe = (props) => {
     )
 }
 
-export default NewRecipe
+export default withRouter(NewRecipe);
