@@ -9,8 +9,8 @@ describe("Testing App", () => {
         expect(wrapper.children().length).toBe(1);
     });
 
-    test("renders 10 routes", () => {
-        expect(wrapper.find("Route").length).toBe(10);
+    test("renders 11 routes", () => {
+        expect(wrapper.find("Route").length).toBe(11);
     });
 
     test("check '/admin' route", () => {
