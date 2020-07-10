@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import RecipeBook from './recipe-book';
 import UserRecipe from './user-recipes';
 import UserInfo from "./user-info";
@@ -48,7 +48,7 @@ function UserApp(props) {
                     />
                 </div>
                 <div className="row card-footer justify-content-between">
-                    <a className="btn btn-sm btn-success" href="/new-recipe" role="button">Add New Recipe</a>
+                    <Link className="btn btn-sm btn-success" to="/new-recipe" role="button">Add New Recipe</Link>
                     <a className="btn btn-info btn-sm" href="/edit-recipe" role="button">Modify Recipe</a>
                     <button type="button" className="btn btn-danger btn-sm" onClick={deleteRecipe}>Delete Recipe</button>
                 </div>
