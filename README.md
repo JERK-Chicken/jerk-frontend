@@ -1,4 +1,18 @@
-**JERK Chicken:**
+# JERK Chicken Application
+
+### Introduction:
+
+JERK chicken is designed to be a client-friendly open-source environment for 
+searching, saving, editing, and sharing recipes. The single page application 
+(SPA) is written  using a combination of react, redux, bootstrap, and CSS, and
+consists of four main pages:
+
+1. A front page, featuring searching functionality
+2. The user dashboard
+3. A detailed recipe view
+4. A recipe creation page
+
+### Roles and Responsibilities:
 
 The group consisting of James Bell, Logan Gantner, Eric Last, and Robert 
 Comstock III were presented with the task of creating a web app using the 
@@ -9,8 +23,6 @@ when they realize that the recipe they found requires ingredients that they
 don't possess. Beyond the search ability, we also wanted to allow user the 
 ability to save recipes that they have previously enjoyed:
 
-**Roles and Responsibilities:**
-
 After deciding on a project idea, we immediately sorted ourselves into the roles
 we would be best at to create the best product possible. The roles are as follows
 - Logan Gantner: Team Lead. Conducted daily standups, delegated responsibilities, and was a liaison between back and front end
@@ -18,7 +30,7 @@ we would be best at to create the best product possible. The roles are as follow
 - Robert Comstock III: Front End Lead. In charge of page desing and layout, testing, and functionality
 - James Bell: Set up databases and assisted build of functionality and endpoints
 
-**Working as a Team**
+### Working as a Team:
 
 To outline our project we used Trello to lay out story points and develop burndown chart. 
 We made sure to have consistent communication by having daily standups to make sure everyone 
@@ -27,7 +39,7 @@ To work on the project we broke into two teams to tackle both the front and back
 members assisting either team when necessary. We were able to work seemlessly by maintining 
 necessary documentation and communication throughout the project. 
 
-**Non-User**
+### Non-User:
 
 Our vision for our webpage was to be client friendly. We wanted to allow anyone the 
 ability to use our application, but limit certain functionality to users and admin. 
@@ -36,7 +48,7 @@ recipes from the database based on the ingredients you entered. If you want to s
 a recipe that you enjoyed, then you would have to register an account which would then 
 allow you access to more functionality. 
 
-**User**
+### User:
 
 Beyond the ability to save a recipe, a user also has the ability to create new 
 recipes, manage their existing recipes, and delete recipes that they no longer 
@@ -46,12 +58,12 @@ information, their saved recipes, and all of the recipes they have created. Once
 the user has accomplished all of their desired tasks, they can log out and go about 
 their merry way!
 
-**The App**
+### The App:
 
 Our webpage has two main pages with some bonus pages that branch off of those two 
 to allow the user added functionality. The Home Page and the User Dashboard. 
 
-**Home Page**
+### Home Page:
 
 Our project begins at the Home Page where the user is able to 
 
