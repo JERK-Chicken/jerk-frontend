@@ -58,22 +58,89 @@ information, their saved recipes, and all of the recipes they have created. Once
 the user has accomplished all of their desired tasks, they can log out and go about 
 their merry way!
 
-### The App:
+## The Navigation Bar:
 
-Our webpage has two main pages with some bonus pages that branch off of those two 
-to allow the user added functionality. The Home Page and the User Dashboard. 
+The top navigation bar acts as the hub for the application, persisting statically
+across all major pages. The bar offers the following functionality:
+- Redirect to front page
+- Logging in, loggin out, and registering a new account
+- Directing to the user dashboard (logged-in users only)
 
-### Home Page:
+### Authentication
 
-Our project begins at the Home Page where the user is able to 
+Authentication is performed through the use of JSON web token (JWT) exchanges.
+The token is first generated at login/registration and is then persisted 
+securely in session storage. Logging and registration are performed through a
+pair of modal components, with the registration modal accessed through the 
+login modal.
 
+TODO:
+- [ ] Add a dropdown of dev-specific tools
 
+## The Front/Search Page (`/`)
 
+The front page showcases the core JERK application feature: inclusive and 
+exclusive filtered search of the recipe archive by contained ingredients. It 
+is important here to make a distinction between ingredients and descriptions:
+Ingredients are a baseline description for a specific food (for example, chicken
+breast or eggs). An ingredient may have one or more specifying descriptions that
+describe preparation or modifications (chicken breast may be chopped or seasoned,
+eggs may be raw or hard-boiled). The ingredient is used for searching recipes,
+while the description is meant for display purposes on the detailed recipe page.
 
+To use the search feature, the following actions are performed: A (potentially
+unlogged) user may add ingredients to their basket, narrowing their search 
+through an optional type field to help find what they are looking for. From there,
+the may search based on two types of queries:
+- When performing a "containing these ingredients" search, the user is asking for all recipes that include *at least* the ingredients listed.
+- When performing a "only these ingredients" search, the user is asking for all recipes that contain *no more than* the ingredients listed.
 
+In so doing, the user may find recipes that will use unusual or nearly expired
+ingredients, and may also opt to include all the ingredients in their fridge
+to see what can be made for dinner at the present time. Finally, from the results
+the user can click and redirect to a view of the recipe's specifics.
 
+The search functionality consists of the following major components:
 
+- `RecipeSearch`, where ingredient filtering and selection occurs
+    - `AddToBasketForm`
+    - `Basket`
+- `RecipeResults`, where recipe results are displayed and selected
 
+TODO:
+- [ ] Create a preview view, where a user can click on a recipe and see basic information (and a picture?) before navigating to a detailed view
+- [ ] Add functionality where a search can be limited to a user's saved/favorite recipes
+
+## The User Dashboard (`/user`)
+
+For logged in users, the dashboard provides three information centers: Basic
+user information, favorited recipes, and recipes created by the user.
+
+### Basic Info (`UserInfo`):
+
+This simple space currently only houses the user's supported roles (user, admin, etc).
+In the future more information, such as credibility, may be stored here.
+
+TODO:
+- [ ] Consider adding a credibility feature, where users earn credibility based on positive actions that increase their privileges on the application
+
+### Favorited Recipes (`RecipeBook`):
+
+A user has the option of add recipes to their saved recipe book from the detailed
+description page. From this list, the user may easily navigate to the detailed
+page for easy access.
+
+TODO:
+- [ ] Add a feature to remove recipes from the favorites list
+
+### Created Recipes (`UserRecipe`):
+
+When a user creates their own recipe, it gets added to this list. These recipes
+can be edited or deleted by the user from the archive. In addition, the user may
+navigate from here to a page for creating new recipes to add to the archive.
+
+TODO:
+- [ ] Plug in feature to edit existing recipe
 
 
 
