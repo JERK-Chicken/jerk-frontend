@@ -54,7 +54,7 @@ const Basket = (props) => {
             </div>
             </div>
             <div className="card-footer">
-            <div className="row justify-content-between">
+            <div className="row justify-content-around">
                 <div className="form-check-inline">
                     <label className="form-check-label">
                     <input type="radio" className="form-check-input" name="optradio" checked="checked" onChange={setContainingMode}/>
@@ -71,7 +71,8 @@ const Basket = (props) => {
                 {loggingRadio}                    
                 </div> 
             </div>
-            <div className="row justify-content-end">               
+            <br/>
+            <div className="row justify-content-around">               
                 <button className="btn btn-primary mb-2" onClick={handleSubmit}>
                     Search for recipes
                 </button>                

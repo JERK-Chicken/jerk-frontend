@@ -49,7 +49,7 @@ div.col1 {
 }
 
 div.limit {
-  height: 200px;
+  height: 178px;
   max-height: 200px;
   overflow: scroll;
 }
@@ -58,4 +58,12 @@ div.recipe {
   height: 478px;
   max-height: 478px;
   overflow: scroll;
+}
+div.results {
+  height: 542px;
+  max-height: 542px;
+  overflow: scroll;
+}
+div.card {
+  opacity: 100%;
 }
