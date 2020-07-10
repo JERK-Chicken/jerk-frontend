@@ -143,11 +143,49 @@ TODO:
 - [ ] Plug in feature to edit existing recipe
 
 
+## The Detailed Recipe Page (`/recipe-page`)
 
+This largely static page includes all the information necessary to recreate the
+recipe yourself:
+- The recipe name
+- Prep and cook times
+- A list of igredients/descriptions, with quantities and units
+- A list of preparation instructions
 
+In addition to these static features, the user may select a dynamic button to save
+the recipe to their recipe book, or link back to the recipe search page. In order
+to determine which recipe is displayed, a recipe id is stored in the session
+storage. This allows separate pages/views to communicate which recipe should be
+rendered, and also persists the information on refreshes.
 
+Major components:
+- `RecipePage`
+    - `GetRecipe`
 
+TODO:
+- [ ] Fix bug: save recipe should be disabled when already saved but sometimes is not
+- [ ] Add an option to rate recipes, and display the average across all users
+- [ ] Display an image of the recipe at the top
+- [ ] Display the author of the recipe at the top
+- [ ] Allow making and display comments 
 
+## The New Recipe Page (`/new-recipe`)
+
+Logged in users have the ability to assemble and publish their own recipes,
+selecting from a list of server-supported ingrients and units, with a 
+customized set of instructions. The page includes two dynamically constructed
+tables with rows that may be deleted at any time. Options include the category
+and ingredients, which progressively filter related dropdowns to ease the search 
+task. Fields are validated before submission is allowed, barring empty fields 
+and rows.
+
+Major components:
+- `NewRecipeForm`
+- Various input components, including the complex `IngredientsInput` and `InstructionsInput` dynamic tables.
+
+TODO:
+- [ ] Fix bug: the category applies to the wrong row many times
+- [ ] Add a new modal option that allows the user to register new ingredients
 
 
 
