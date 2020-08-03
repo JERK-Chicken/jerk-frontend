@@ -23,41 +23,19 @@ function App() {
   return (
     <div>
       <Router>
-        <Header></Header>
+        <Header />
         <Switch>
-        <Route path="/" exact>
-            <Home></Home>
-        </Route>
-        <Route path="/admin" exact>
-          <AdminApp></AdminApp>
-        </Route>
-        <Route path="/user" exact>
-          <UserApp></UserApp>
-        </Route>
-        <Route path="/new-recipe" exact>
-          <NewRecipe></NewRecipe>
-        </Route>
-        <Route path="/register" exact>
-          <Register></Register>
-        </Route>
-        <Route path="/recipe-page" exact>
-          <RecipePage></RecipePage>
-        </Route>
-        <Route path="/dev-user" exact>
-          <DevUser/>
-        </Route>
-        <Route path="/dev-recipe" exact>
-          <DevRecipe/>
-        </Route>
-        <Route path="/dev-ingredient" exact>
-          <DevIngredient/>
-        </Route>
-        <Route path="/edit-recipe" exact>
-          <EditRecipe/>
-        </Route>
-        <Route>
-          <NotFound></NotFound>
-        </Route>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/admin" component={AdminApp} />
+          <Route exact path="/user" component={UserApp} />
+          <Route exact path="/new-recipe" component={NewRecipe} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/recipe-page" component={RecipePage} />
+          <Route exact path="/dev-user" component={DevUser} />
+          <Route exact path="/dev-recipe" component={DevRecipe} />
+          <Route exact path="/dev-ingredient" component={DevIngredient} />
+          <Route exact path="/edit-recipe" component={EditRecipe} />
+          <Route component={NotFound} />
         </Switch>
       </Router>
     </div>
