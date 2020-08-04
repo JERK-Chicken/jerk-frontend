@@ -12,7 +12,7 @@ consists of four main pages:
 3. A detailed recipe view
 4. A recipe creation page
 
-### Roles and Responsibilities:  
+### Roles and Responsibilities:     
 
 The group consisting of James Bell, Logan Gantner, Eric Last, and Robert 
 Comstock III were presented with the task of creating a web app using the 
