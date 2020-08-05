@@ -1,6 +1,6 @@
 # JERK Chicken Application
 
-### Introduction:
+### Introduction:  
 
 JERK chicken is designed to be a client-friendly open-source environment for 
 searching, saving, editing, and sharing recipes. The single page application 
