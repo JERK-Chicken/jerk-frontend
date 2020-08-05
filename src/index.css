@@ -65,6 +65,6 @@ div.results {
 	max-height: 542px;
 	overflow: scroll;
 }
-/* div.card {
-	opacity: 95%;
-} */
+div.card {
+	opacity: 5%;
+}
