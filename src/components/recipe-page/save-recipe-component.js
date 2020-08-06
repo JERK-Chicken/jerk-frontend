@@ -12,22 +12,22 @@ async function getRecipe(setRecipe, id) {
 function GetRecipe(props) {
 	const [ currRecipe, setRecipe ] = useState({});
 	const [ savedRecipes, setSavedRecipes ] = useState([]);
-	const [ isSaved, setIsSaved ] = useState(false);
+	const [ isSaved, setIsSaved ] = useState(true);
 
-	useEffect(
-		() => {
-			(async (_) => {
-				getRecipe(setRecipe, sessionStorage.getItem('selected-recipe'));
-			})();
-			(async (_) => requestRecipebook(setSavedRecipes))();
-			const savedIds = savedRecipes.map((obj) => obj.id);
-			setIsSaved(savedIds.includes(currRecipe.recipe_id));
-		},
-		[ props.currentRecipe, currRecipe.recipe_id ]
-	);
+	useEffect(() => {
+		(async (_) => {
+			getRecipe(setRecipe, sessionStorage.getItem('selected-recipe'));
+			let recipes = await requestRecipebook();
+			const savedIds = recipes.map((obj) => obj.id);
+			let saved = savedIds.includes(parseInt(sessionStorage.getItem('selected-recipe')));
+			sessionStorage.setItem('isSaved', saved);
+			setIsSaved(sessionStorage.getItem('isSaved'));
+		})();
+	}, []);
 
 	function saveButton() {
-		if (isSaved) {
+		console.log(isSaved);
+		if (isSaved != 'false') {
 			return (
 				<button className="btn btn-success" disabled>
 					Favorite This Recipe
@@ -110,7 +110,8 @@ function GetRecipe(props) {
 
 function mapStateToProps(store) {
 	return {
-		currentRecipe: store.currentRecipe
+		currentRecipe: store.currentRecipe,
+		recipes: store.recipeBook
 	};
 }
 
