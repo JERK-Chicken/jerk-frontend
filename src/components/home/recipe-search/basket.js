@@ -11,7 +11,12 @@ const Basket = (props) => {
 
     function tableBody() {
         return props.basket.map((ingredient) => 
-            <BasketRow key={ingredient.name} ingredient={ingredient} setBasket={props.setBasket} basket={props.basket}/>
+            <BasketRow 
+                key={ingredient.name} 
+                ingredient={ingredient} 
+                basket={props.basket}
+                setBasket={props.setBasket} 
+            />
         );
     }
 

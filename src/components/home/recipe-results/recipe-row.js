@@ -2,7 +2,7 @@ import React from "react";
 
 const RecipeRow = (props) => {
 
-    let classes = `${props.isActive ? "active-row" : ""}`;
+    let classes = `interactive-row ${props.isActive ? "active-row" : ""}`;
 
     const handleClick = () => {
         props.setSelectedRecipe(props.data.id);
@@ -10,9 +10,7 @@ const RecipeRow = (props) => {
 
     return (
         <tr className={classes} onClick={handleClick}>
-        <td>
-            {props.data.name}
-        </td>
+            <td>{props.data.name}</td>
         </tr>
     );
 };
