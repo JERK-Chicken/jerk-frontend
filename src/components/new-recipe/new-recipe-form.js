@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import NameInput from './inputs/name-input';
 import PrepTimeInput from './inputs/prep-time-input';
@@ -25,6 +25,7 @@ const NewRecipe = (props) => {
 	const [ name, setName ] = useState('');
 	const [ prepTime, setPrepTime ] = useState('');
 	const [ cookTime, setCookTime ] = useState('');
+	const [ newRecipe, setNewRecipe ] = useState({});
 
 	const handleChange = (e) => {
 		//console.log(ingredientList);
@@ -73,12 +74,17 @@ const NewRecipe = (props) => {
 		if (!validated()) {
 			return;
 		}
-
-		const newRecipeObject = buildRecipe();
-		// console.log(newRecipeObject);
-		(async (_) => requestAddNewRecipe(newRecipeObject))();
-		props.history.push('/user');
+		// This sets the recipe, which triggers a hook that (eventually) reroutes the page
+		setNewRecipe(buildRecipe());
 	};
+
+	useEffect(() => {
+		if (newRecipe && newRecipe.name) {
+			requestAddNewRecipe(newRecipe).then(() => {
+				props.history.push('/user');
+			});
+		}
+	}, [newRecipe, props.history]);
 
 	function validated() {
 		if (name === '' || prepTime === '' || cookTime === '') {
