@@ -8,17 +8,6 @@ const GeneralTable = (props) => {
       <div id = "table">
       <div className="table-wrapper-scroll-y my-custom-scrollbar table-responsive table-hover">
       <table className="table">
-        {/* <thead>
-          <tr>
-            {Object.keys(props.records[0]).map((objectKey, index) => {
-              return (
-                <th key={index}>
-                <TitleCase content={objectKey}></TitleCase>
-                </th>
-              );
-            })}
-          </tr>
-        </thead> */}
         <tbody>
           {props.records.map((record) => {
             let isActive = (props.selectedId === record.id);;
