@@ -41,6 +41,10 @@ body {
 	background-color: rgb(236, 236, 236);
 }
 
+.interactive-row {
+	cursor: pointer;
+}
+
 /* .active-row:hover {
   background-color: rgb(151, 121, 0);
 } */
