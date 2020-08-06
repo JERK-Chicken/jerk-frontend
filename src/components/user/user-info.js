@@ -6,7 +6,7 @@ function UserInfo() {
 
     return (
         <div className="card">
-            <div className="card-header"><h3>Welcome {info.username}!</h3></div>
+            <div className="card-header"><h3>Welcome, {info.username}!</h3></div>
                 <div className="card-body">
                     Roles
                     <ul>

@@ -18,24 +18,29 @@ const RecipeBook = (props) => {
     }
   }
 
+  const viewRecipeButton = () => {
+    const text = "View Recipe";
+    return selectedId ? 
+      <button type="button" className="btn btn-primary" onClick={handleBookRecipesClick}>{text}</button> :
+      <button type="button" className="btn btn-primary" disabled>{text}</button>
+  }
+
   return (
-  <div className="card">
-    <div className="card-header">
-      <h3>Favorited Recipes</h3>
-    </div>
-    <div className="card-body">
-        <div  className ="limit">
-          <GeneralTable records={recipes} selectedId={selectedId} setSelectedId={setSelectedId}/>
-        </div>
-    </div>
-    <div className="card-footer">
-      <div className="row justify-content-end">
-          <div className="btn btn-primary" role="button" onClick={handleBookRecipesClick}>
-              View Recipe
+    <div className="card">
+      <div className="card-header">
+        <h3>Favorited Recipes</h3>
+      </div>
+      <div className="card-body">
+          <div className ="limit">
+            <GeneralTable records={recipes} selectedId={selectedId} setSelectedId={setSelectedId}/>
           </div>
       </div>
+      <div className="card-footer">
+        <div className="row justify-content-end">
+          {viewRecipeButton()}
+        </div>
+      </div>
     </div>
-  </div>
   );  
 };
 
