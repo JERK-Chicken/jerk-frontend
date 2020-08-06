@@ -9,7 +9,7 @@ const BasketRow = (props) => {
     }
 
     return (
-        <tr onClick={removeIngredient}>
+        <tr className="interactive-row" onClick={removeIngredient}>
             <td>{props.ingredient.name}</td>
         </tr>
     );
