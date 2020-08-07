@@ -63,13 +63,13 @@ const Basket = (props) => {
             <div className="row justify-content-around">
                 <div className="form-check-inline">
                     <label className="form-check-label">
-                    <input type="radio" className="form-check-input" name="optradio" checked="checked" onChange={setContainingMode}/>
+                    <input type="radio" className="form-check-input" name="optradio" checked={containingSearch} onChange={setContainingMode}/>
                     Contains these Ingredients            
                     </label>
                 </div>
                 <div className="form-check-inline">
                     <label className="form-check-label">
-                    <input type="radio" className="form-check-input" name="optradio" onChange={setLimitedMode}/>
+                    <input type="radio" className="form-check-input" name="optradio" checked={limitedToSearch} onChange={setLimitedMode}/>
                     Only these Ingredients
                     </label>
                 </div> 
