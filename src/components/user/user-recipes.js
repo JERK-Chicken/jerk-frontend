@@ -38,6 +38,7 @@ const UserRecipes = () => {
         setRecipes(
           recipes.filter(r => r.id !== selectedId)
         );
+        setSelectedId("");
     }   
   }
 
