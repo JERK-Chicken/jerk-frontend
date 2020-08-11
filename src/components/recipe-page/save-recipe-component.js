@@ -11,22 +11,20 @@ async function getRecipe(setRecipe, id) {
 
 function GetRecipe(props) {
 	const [ currRecipe, setRecipe ] = useState({});
-	// const [ savedRecipes, setSavedRecipes ] = useState([]);
 	const [ isSaved, setIsSaved ] = useState(true);
 
 	useEffect(() => {
-		(async (_) => {
-			getRecipe(setRecipe, sessionStorage.getItem('selected-recipe'));
+    const recipeId = sessionStorage.getItem('selected-recipe');
+		(async () => {
+			await getRecipe(setRecipe, recipeId);
 			let recipes = await requestRecipebook();
 			const savedIds = recipes.map((obj) => obj.id);
-			let saved = savedIds.includes(parseInt(sessionStorage.getItem('selected-recipe')));
-			sessionStorage.setItem('isSaved', saved);
-			setIsSaved(sessionStorage.getItem('isSaved'));
-		})();
+      let saved = savedIds.includes(parseInt(recipeId));
+      setIsSaved(saved);
+    })();
 	}, []);
 
 	function saveButton() {
-		console.log(isSaved);
 		if (isSaved) {
 			return (
 				<button className="btn btn-danger" onClick={handleUnfavorite}>
