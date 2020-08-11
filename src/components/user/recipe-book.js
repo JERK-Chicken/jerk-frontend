@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import GeneralTable from '../general/general-table';
 import { withRouter } from 'react-router-dom';
-import { requestRecipebook } from '../../helpers/requests/recipe-requests';
+import { requestRecipebook, requestDeleteBookRecipe } from '../../helpers/requests/recipe-requests';
 import { connect } from 'react-redux';
 import { loadRecipeBook } from '../../redux/actions/recipe-book-actions';
 
@@ -21,17 +21,36 @@ const RecipeBook = (props) => {
 		})();
 	}, []);
 
-	const handleBookRecipesClick = (e) => {
+	const handleViewRecipesClick = (e) => {
 		if (selectedId) {
 			sessionStorage.setItem('selected-recipe', selectedId);
 			props.history.push('/recipe-page');
 		}
+  };
+  
+  const handleRemoveRecipesClick = (e) => {
+    (async _ => requestDeleteBookRecipe(selectedId))();
+    setRecipes(recipes.filter(r => r.id !== selectedId));
+    setSelectedId("");
+  }
+
+  const removeRecipeButton = () => {
+		const text = 'Unfavorite';
+		return selectedId ? (
+			<button type="button" className="btn btn-danger" onClick={handleRemoveRecipesClick}>
+				{text}
+			</button>
+		) : (
+			<button type="button" className="btn btn-danger" disabled>
+				{text}
+			</button>
+		);
 	};
 
 	const viewRecipeButton = () => {
 		const text = 'View Recipe';
 		return selectedId ? (
-			<button type="button" className="btn btn-primary" onClick={handleBookRecipesClick}>
+			<button type="button" className="btn btn-primary" onClick={handleViewRecipesClick}>
 				{text}
 			</button>
 		) : (
@@ -51,8 +70,9 @@ const RecipeBook = (props) => {
 					<GeneralTable records={recipes} selectedId={selectedId} setSelectedId={setSelectedId} />
 				</div>
 			</div>
-			<div className="card-footer">
-				<div className="row justify-content-end">{viewRecipeButton()}</div>
+			<div className="card-footer row">
+        <div className="col justify-content-start">{removeRecipeButton()}</div>
+				<div className="col justify-content-end">{viewRecipeButton()}</div>
 			</div>
 		</div>
 	);
