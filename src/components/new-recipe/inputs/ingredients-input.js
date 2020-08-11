@@ -1,5 +1,6 @@
 import React from 'react';
 import NewIngredientRow from './ingredients/new-ingredient-row';
+import NewIngredientButton from '../../new-ingredient/new-ingredient-button';
 
 const IngredientsInput = (props) => {
 	return (
@@ -7,6 +8,7 @@ const IngredientsInput = (props) => {
 			<thead>
 				<tr className="required">
 					<th>Ingredients</th>
+					<th><NewIngredientButton /></th>
 				</tr>
 			</thead>
 			<tbody>

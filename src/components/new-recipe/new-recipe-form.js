@@ -28,7 +28,11 @@ const NewRecipe = (props) => {
 	const [ newRecipe, setNewRecipe ] = useState({});
 
 	const handleChange = (e) => {
-		//console.log(ingredientList);
+		console.log(e.target.name);
+		if(e.target.name==="modal-select" || e.target.name==="ingredient-to-add" || e.target.name=== "description-to-add") {
+			console.log("hit the change on modal-select");
+			return;
+		}
 		if ([ 'quantity', 'unit', 'category', 'ingredient', 'description' ].includes(e.target.name)) {
 			let temp = [ ...ingredientList ];
 			temp[e.target.dataset.id][e.target.name] = e.target.value;
