@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { requestRecipebook, requestSaveRecipe } from '../../helpers/requests/recipe-requests';
+import { requestRecipebook, requestSaveRecipe, requestDeleteBookRecipe } from '../../helpers/requests/recipe-requests';
 
 async function getRecipe(setRecipe, id) {
 	const res = await axios.get(`/recipes/${id}`);
@@ -11,40 +11,44 @@ async function getRecipe(setRecipe, id) {
 
 function GetRecipe(props) {
 	const [ currRecipe, setRecipe ] = useState({});
-	const [ savedRecipes, setSavedRecipes ] = useState([]);
 	const [ isSaved, setIsSaved ] = useState(true);
 
 	useEffect(() => {
-		(async (_) => {
-			getRecipe(setRecipe, sessionStorage.getItem('selected-recipe'));
+    const recipeId = sessionStorage.getItem('selected-recipe');
+		(async () => {
+			await getRecipe(setRecipe, recipeId);
 			let recipes = await requestRecipebook();
 			const savedIds = recipes.map((obj) => obj.id);
-			let saved = savedIds.includes(parseInt(sessionStorage.getItem('selected-recipe')));
-			sessionStorage.setItem('isSaved', saved);
-			setIsSaved(sessionStorage.getItem('isSaved'));
-		})();
+      let saved = savedIds.includes(parseInt(recipeId));
+      setIsSaved(saved);
+    })();
 	}, []);
 
 	function saveButton() {
-		console.log(isSaved);
-		if (isSaved != 'false') {
+		if (isSaved) {
 			return (
-				<button className="btn btn-success" disabled>
-					Favorite This Recipe
+				<button className="btn btn-danger" onClick={handleUnfavorite}>
+					Unfavorite
 				</button>
 			);
 		}
 		return (
-			<button className="btn btn-success" onClick={handleSubmit}>
+			<button className="btn btn-success" onClick={handleFavorite}>
 				Favorite This Recipe
 			</button>
 		);
 	}
 
-	const handleSubmit = (e) => {
+	const handleFavorite = (e) => {
 		e.preventDefault();
 		(async (_) => requestSaveRecipe(sessionStorage.getItem('selected-recipe')))();
 		setIsSaved(true);
+  };
+  
+  const handleUnfavorite = (e) => {
+		e.preventDefault();
+		(async (_) => requestDeleteBookRecipe(sessionStorage.getItem('selected-recipe')))();
+		setIsSaved(false);
 	};
 
 	if (currRecipe.name)
@@ -93,11 +97,8 @@ function GetRecipe(props) {
 							</div>
 						</div>
 						<div className="row card-footer justify-content-between">
-							{/* <button className="btn btn-success" onClick={props.onSubmit} >
-                  Save Recipe
-                </button> */}
 							{saveButton()}
-							<Link className="btn btn-danger" to="/" role="button">
+							<Link className="btn btn-warning" to="/" role="button">
 								Return to Basket
 							</Link>
 						</div>

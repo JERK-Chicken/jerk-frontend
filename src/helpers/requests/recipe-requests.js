@@ -45,6 +45,18 @@ export async function requestDeleteRecipe(recipeId) {
 	}
 }
 
+export async function requestDeleteBookRecipe(recipeId) {
+	try {
+		const config = {
+			headers: {'x-access-token': sessionStorage.getItem('json-token')}
+		};
+
+		await axios.delete(`/users/recipebook/${recipeId}`, config);
+	} catch (error) {
+		console.error(error);
+	}
+}
+
 export async function requestSaveRecipe(data) {
 	try {
 		const config = {
