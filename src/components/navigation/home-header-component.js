@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import LoginButton from "./login-logout/login/login-button";
 import LogoutButton from "./login-logout/logout-button";
 import UserButton from "../user/user-button";
+import NewIngredientButton from "../new-ingredient/new-ingredient-button";
 //import AdminButton from "../admin/admin-button";
 
 
