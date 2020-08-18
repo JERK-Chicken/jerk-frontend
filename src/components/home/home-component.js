@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import Basket from "./recipe-search/basket";
 import RecipeResults from "./recipe-results/recipe-results";
 import AddToBasketForm from "./recipe-search/add-to-basket-form";
+import CreditsButton from "../navigation/credits/credits-button";
 
 const Home = () => {
     const [basket, setBasket] = useState([]);

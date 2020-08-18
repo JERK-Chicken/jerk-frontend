@@ -7,7 +7,6 @@ function UserButton() {
   return (
     <div className="red-button">
       <Link className="btn text-white" to="/user" role="button">Dashboard</Link>
-      
     </div>   
   );
 }

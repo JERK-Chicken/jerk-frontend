@@ -8,7 +8,7 @@ function LoginButton() {
   return (
     <div>
       <div className="red-button">
-        <button className="btn btn-lg text-white" onClick={() => setLoginIsOpen(true)}>
+        <button className="btn text-white" onClick={() => setLoginIsOpen(true)}>
           Login
         </button>
       </div>

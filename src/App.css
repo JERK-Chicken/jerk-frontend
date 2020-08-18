@@ -1,3 +1,26 @@
 .App {
   text-align: center;
 }
+
+.creditsPhoto {
+  width: 15vw;
+  height: auto;
+}
+
+#credit-text h4{
+  color: white;
+  font-size: 24px;
+  text-align: left;
+}
+
+#credit-text img{
+  position: relative;
+  vertical-align: middle;
+  border: 3px solid black;
+}
+
+.credit-card {
+  background-color: gray;
+  border-radius: 10px;
+  border: 2px solid black;
+}

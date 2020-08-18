@@ -14,8 +14,9 @@ import DevUser from './components/admin/dev-user';
 import DevRecipe from './components/admin/dev-recipe';
 import DevIngredient from './components/admin/dev-ingredient';
 import EditRecipe from './components/edit-recipe/edit-recipe-form';
+import Credits from './components/navigation/credits/credits-component';
 
-axios.defaults.baseURL = 'http://52.15.59.57:8083';
+axios.defaults.baseURL = 'http://3.129.224.90:8083';
 // axios.defaults.withCredentials = true;
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
 					<Route exact path="/dev-recipe" component={DevRecipe} />
 					<Route exact path="/dev-ingredient" component={DevIngredient} />
 					<Route exact path="/edit-recipe" component={EditRecipe} />
+					<Route exact path="/credits" component={Credits} />
 					<Route component={NotFound} />
 				</Switch>
 			</Router>
