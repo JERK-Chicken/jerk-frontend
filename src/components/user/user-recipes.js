@@ -42,6 +42,11 @@ const UserRecipes = () => {
     }   
   }
 
+  const handleRecipeClick = (e) =>{
+    sessionStorage.setItem('selected-recipe', e);
+			props.history.push('/recipe-page');
+  }
+
   return (
     <div className="card">
       <div className="card-header">
@@ -49,7 +54,7 @@ const UserRecipes = () => {
       </div>
       <div className="card-body">
         <div className ="recipe">
-          <GeneralTable records={recipes} selectedId={selectedId} setSelectedId={setSelectedId}/>
+          <GeneralTable records={recipes} selectedId={selectedId} setSelectedId={setSelectedId} setTextClickHandeler={true} textClickHandeler={handleRecipeClick}/>
         </div>
       </div>
       <div className="row card-footer justify-content-between">

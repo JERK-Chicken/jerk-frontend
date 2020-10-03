@@ -7,11 +7,22 @@ const GeneralRow = (props) => {
         props.setSelectedId(props.record.id);
     }
 
-    return (
-        <tr className={classes} onClick={handleClick}>
-            <td>{props.record.name}</td>
-        </tr>
-    );
+    if(props.setTextClickHandeler){
+        return (
+            <tr className={classes} onClick={handleClick}>
+                <td onClick={props.handleRecipeClick(props.record.id)}>{props.record.name}</td>
+            </tr>
+        );
+    }
+    else{
+        return (
+            <tr className={classes} onClick={handleClick}>
+                <td>{props.record.name}</td>
+            </tr>
+        );
+    }
+
+    
 };
 
 export default GeneralRow;

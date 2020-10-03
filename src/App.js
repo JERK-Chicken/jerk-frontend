@@ -15,7 +15,8 @@ import DevRecipe from './components/admin/dev-recipe';
 import DevIngredient from './components/admin/dev-ingredient';
 import EditRecipe from './components/edit-recipe/edit-recipe-form';
 
-axios.defaults.baseURL = 'http://52.15.59.57:8083';
+//axios.defaults.baseURL = 'http://52.15.59.57:8083';
+axios.defaults.baseURL = 'http://localhost:8083';
 // axios.defaults.withCredentials = true;
 
 function App() {
