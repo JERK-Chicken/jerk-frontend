@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from "react";
 import GeneralTable from "../general/general-table"
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { requestWrittenRecipe } from "../../helpers/requests/recipe-requests";
 import { requestDeleteRecipe } from "../../helpers/requests/recipe-requests";
 
 
-const UserRecipes = () => {
+const UserRecipes = (props) => {
   const [selectedId, setSelectedId] = useState("");
   const [recipes, setRecipes] = useState("");
 
@@ -42,8 +42,11 @@ const UserRecipes = () => {
     }   
   }
 
-  const handleRecipeClick = (e) =>{
-    sessionStorage.setItem('selected-recipe', e);
+  const handleRecipeClick = (e) => {
+    //e.stopPropagation();
+    const elemId = e.target.getAttribute("value")
+    console.log(elemId)
+    sessionStorage.setItem('selected-recipe', elemId);
 			props.history.push('/recipe-page');
   }
 
@@ -68,4 +71,4 @@ const UserRecipes = () => {
   );  
 };
 
-export default UserRecipes;
+export default (withRouter(UserRecipes));

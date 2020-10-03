@@ -10,7 +10,7 @@ const GeneralRow = (props) => {
     if(props.setTextClickHandeler){
         return (
             <tr className={classes} onClick={handleClick}>
-                <td onClick={props.handleRecipeClick(props.record.id)}>{props.record.name}</td>
+                <td ><a onClick={props.textClickHandeler} value ={props.record.id}>{props.record.name}</a></td> 
             </tr>
         );
     }

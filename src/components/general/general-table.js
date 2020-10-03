@@ -12,7 +12,7 @@ const GeneralTable = (props) => {
               {props.records.map((record) => {
                 let isActive = (props.selectedId === record.id);;
                 if (props.setTextClickHandeler) {
-                  return (<GeneralRow key={record.id} record={record} isActive={isActive} setSelectedId={props.setSelectedId} setTextClickHandeler={true} textClickHandeler={handleRecipeClick}/>);
+                  return (<GeneralRow key={record.id} record={record} isActive={isActive} setSelectedId={props.setSelectedId} setTextClickHandeler={true} textClickHandeler={props.textClickHandeler}/>);
               }
                 else {
                   return (
