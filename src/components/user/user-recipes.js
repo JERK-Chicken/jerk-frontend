@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from "react";
 import GeneralTable from "../general/general-table"
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { requestWrittenRecipe } from "../../helpers/requests/recipe-requests";
 import { requestDeleteRecipe } from "../../helpers/requests/recipe-requests";
 
 
-const UserRecipes = () => {
+const UserRecipes = (props) => {
   const [selectedId, setSelectedId] = useState("");
   const [recipes, setRecipes] = useState("");
 
@@ -42,6 +42,14 @@ const UserRecipes = () => {
     }   
   }
 
+  const handleRecipeClick = (e) => {
+    //e.stopPropagation();
+    const elemId = e.target.getAttribute("value")
+    console.log(elemId)
+    sessionStorage.setItem('selected-recipe', elemId);
+			props.history.push('/recipe-page');
+  }
+
   return (
     <div className="card">
       <div className="card-header">
@@ -49,7 +57,7 @@ const UserRecipes = () => {
       </div>
       <div className="card-body">
         <div className ="recipe">
-          <GeneralTable records={recipes} selectedId={selectedId} setSelectedId={setSelectedId}/>
+          <GeneralTable records={recipes} selectedId={selectedId} setSelectedId={setSelectedId} setTextClickHandeler={true} textClickHandeler={handleRecipeClick}/>
         </div>
       </div>
       <div className="row card-footer justify-content-between">
@@ -63,4 +71,4 @@ const UserRecipes = () => {
   );  
 };
 
-export default UserRecipes;
+export default (withRouter(UserRecipes));

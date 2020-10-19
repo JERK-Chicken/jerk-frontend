@@ -72,3 +72,6 @@ div.results {
 div.card {
 	opacity: .95;
 }
+.recipe-link:hover {
+	background-color: bisque;
+}
